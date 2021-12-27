@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.mishelovka_main');
 });
+
+Route::get('/mishelovka', function () {
+    return view('layouts.mishelovka_second');
+})->name('mishelovka');

@@ -315,7 +315,7 @@
                                                             </div>
                                                             <div class="block-item block-link">
                                                                 <div class="b-39719582"><a rel="noopener"
-                                                                                           href="/veshelovka.html"
+                                                                                           href="{{route('mishelovka')}}"
                                                                                            target="_top"
                                                                                            class="button btn-link btn-link-styled without-thumb has-animation has-animation-blink"
                                                                                            block_id="39719582"
