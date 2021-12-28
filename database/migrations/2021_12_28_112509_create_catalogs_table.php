@@ -16,9 +16,9 @@ class CreatecatalogsTable extends Migration
         Schema::create('catalogs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('type')->index();
-            $table->string('caption')->index();
-            $table->string('color',7);
             $table->string('img')->nullable();
+            $table->string('caption')->index();
+            $table->string('color',7)->nullable();
             $table->timestamps();
         });
     }

@@ -22,7 +22,8 @@ class CatalogController extends Controller
 
     public function store(Request $request)
     {
-        //
+        dump($request->allFiles());
+        dump($request->all());
     }
 
     public function show(Catalog $catalog)
