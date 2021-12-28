@@ -3,16 +3,12 @@
 @section('content')
 
     <div class="container">
-        <h3>Каталог</h3>
-
-        <div>
-            @php
-                dump($cats);
-            @endphp
-        </div>
+        <h3>Каталоги</h3>
 
         <div class="addNewCatalogBlock card p-3">
             <h4>Добавление нового каталога</h4>
+            @include('catalog.flash_message')
+
             <form action="{{route('catalog.store')}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <div class="mb-3">
@@ -40,8 +36,50 @@
                 <button type="submit" class="btn btn-success">Добавить</button>
             </form>
         </div>
-        <div class="catalogsWrapper">
-
+        <div class="catalogsWrapper mt-3">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>описание</th>
+                        <th>тип каталога</th>
+                        <th>цвет</th>
+                        <th>картинка</th>
+                        <th>действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($cats)
+                        @foreach($cats as $k => $v)
+                            <tr>
+                                <td>{{$v->id}}</td>
+                                <td>{{$v->caption}}</td>
+                                <td>{{$v->type == 1 ? 'мальчики' : 'девочки'}}</td>
+                                <td>{{$v->color}}</td>
+                                <td>{{$v->img}}</td>
+                                <td>
+                                    <a href="#">просмотреть</a>
+                                    <a href="#">редактировать</a>
+                                    @include('catalog.buttons.delete', ['id' => $v->id])
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+                <tfooter>
+{{--                    <tr>--}}
+{{--                        <td colspan="6">tfooter</td>--}}
+{{--                    </tr>--}}
+                </tfooter>
+                <tcaption>
+                    Список с каталогами
+                </tcaption>
+            </table>
+            <div>
+                @php
+                    //dump($cats);
+                @endphp
+            </div>
         </div>
     </div>
 
