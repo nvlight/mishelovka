@@ -1061,7 +1061,7 @@
                      data-field-width-res-480-value="300" data-field-axisy-value="top" data-field-axisx-value="left"
                      data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px"
                      data-field-heightunits-value="" data-field-widthunits-value=""><a class='tn-atom'
-                                                                                       href="boys.html">МАЛЬЧИКАМ</a>
+                                                                                       href="{{route('boys.index')}}">МАЛЬЧИКАМ</a>
                 </div>
                 <div class='t396__elem tn-elem tn-elem__2994791301617394331794' data-elem-id='1617394331794'
                      data-elem-type='shape' data-field-top-value="-52" data-field-top-res-960-value="-49"
@@ -1103,7 +1103,7 @@
                      data-field-width-res-320-value="230" data-field-axisy-value="top" data-field-axisx-value="left"
                      data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px"
                      data-field-heightunits-value="" data-field-widthunits-value="px" data-field-filewidth-value="1080"
-                     data-field-fileheight-value="1920"><a class='tn-atom' href="boys.html"> <img
+                     data-field-fileheight-value="1920"><a class='tn-atom' href="{{route('boys.index')}}"> <img
                                 class='tn-atom__img t-img'
                                 data-original='{{asset('imgs/imgs_zero_page/photo1.png')}}'
                                 imgfield='tn_img_1617394589032'> </a></div>
@@ -1117,7 +1117,7 @@
                      data-field-width-value="300" data-field-width-res-960-value="300"
                      data-field-width-res-480-value="300" data-field-axisy-value="top" data-field-axisx-value="left"
                      data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px"
-                     data-field-heightunits-value="" data-field-widthunits-value=""><a class='tn-atom' href="girls.html">ДЕВОЧКАМ</a>
+                     data-field-heightunits-value="" data-field-widthunits-value=""><a class='tn-atom' href="{{route('girls.index')}}">ДЕВОЧКАМ</a>
                 </div>
                 <div class='t396__elem tn-elem tn-elem__2994791301617394630750' data-elem-id='1617394630750'
                      data-elem-type='image' data-field-top-value="10" data-field-top-res-960-value="230"
@@ -1130,7 +1130,7 @@
                      data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid"
                      data-field-topunits-value="px" data-field-leftunits-value="px" data-field-heightunits-value=""
                      data-field-widthunits-value="px" data-field-filewidth-value="850"
-                     data-field-fileheight-value="1133"><a class='tn-atom' href="girls.html"> <img
+                     data-field-fileheight-value="1133"><a class='tn-atom' href="{{route('girls.index')}}"> <img
                                 class='tn-atom__img t-img'
                                 data-original='{{asset('imgs/imgs_zero_page/photo2.png')}}'> </a></div>
                 <div class='t396__elem tn-elem tn-elem__2994791301617394900830' data-elem-id='1617394900830'
