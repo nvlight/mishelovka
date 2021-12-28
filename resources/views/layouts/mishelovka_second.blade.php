@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
     <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/><!--metatextblock--><title>Мышеловка главная
         главная</title>
-    <meta property="og:url" content="https://mishelovka.mgdev.ru/veshelovka"/>
-    <meta property="og:title" content="Вещеловка главная"/>
+    <meta property="og:url" content="https://mishelovka.mgdev.ru/mishelovka"/>
+    <meta property="og:title" content="Мышеловка главная"/>
     <meta property="og:description" content=""/>
     <meta property="og:type" content="website"/>
-    <meta property="og:image" content="common/main_phtoto.png"/>
+    <meta property="og:image" content="{{asset('imgs/common/main_photo.png')}}"/>
     <link rel="canonical" href="veshelovka.html"><!--/metatextblock-->
     <meta name="format-detection" content="telephone=no"/>
     <meta http-equiv="x-dns-prefetch-control" content="on">
@@ -68,7 +68,7 @@
                 }, 400);
             });
         }</script>
-</head>
+    </head>
 <body class="t-body" style="margin:0;"><!--allrecords-->
 <div id="allrecords" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="3180320"
      data-tilda-page-id="18534671" data-tilda-page-alias="veshelovka"

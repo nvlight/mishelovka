@@ -323,10 +323,12 @@
                                                                                            index="3">
 
                                                                         <div>
-                                                                            <div class="btn-link-title">КАТАЛОГ (от 0 до 13
+                                                                            <div class="btn-link-title">КАТАЛОГ (от 0 до
+                                                                                13
                                                                                 лет)
                                                                             </div>
-                                                                            <div class="btn-link-subtitle">Подробные фото и
+                                                                            <div class="btn-link-subtitle">Подробные
+                                                                                фото и
                                                                                 видео по запросу
                                                                             </div>
                                                                         </div>
@@ -362,7 +364,8 @@
                                                                                         data-mode="stroke"
                                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                                         width="24" height="24"
-                                                                                        viewBox="0 0 24 24" stroke-width="1"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        stroke-width="1"
                                                                                         stroke="#000" fill="none"
                                                                                         stroke-linecap="round"
                                                                                         stroke-linejoin="round"><path
@@ -387,7 +390,8 @@
                                                                             <div class="btn-link-title">Скачать таблицу
                                                                                 размеров
                                                                             </div>
-                                                                            <div class="btn-link-subtitle">Бесплатно!</div>
+                                                                            <div class="btn-link-subtitle">Бесплатно!
+                                                                            </div>
                                                                         </div>
                                                                     </a></div>
                                                             </div>
@@ -521,7 +525,8 @@
                                                                                         data-mode="stroke"
                                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                                         width="24" height="24"
-                                                                                        viewBox="0 0 24 24" stroke-width="1"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        stroke-width="1"
                                                                                         stroke="#000" fill="none"
                                                                                         stroke-linecap="round"
                                                                                         stroke-linejoin="round"><path
@@ -543,12 +548,15 @@
                                     <svg version="1.1" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"
                                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 76 76"
                                          xml:space="preserve"
-                                         style="fill: rgb(0, 0, 0); position: relative; top: 3px; margin: 0px 2px;"><g><path d="M38,0C17,0,0,17,0,38s17,38,38,38s38-17,38-38S59,0,38,0z M38,72C19.2,72,4,56.8,4,38S19.2,4,38,4s34,15.2,34,34S56.8,72,38,72z M57.5,38c0,1.1-0.9,2-2,2h-35c-1.1,0-2-0.9-2-2s0.9-2,2-2h35C56.6,36,57.5,36.9,57.5,38z M57.5,50c0,1.1-0.9,2-2,2h-35c-1.1,0-2-0.9-2-2s0.9-2,2-2h35C56.6,48,57.5,48.9,57.5,50z M57.5,26c0,1.1-0.9,2-2,2h-35c-1.1,0-2-0.9-2-2s0.9-2,2-2h35C56.6,24,57.5,24.9,57.5,26z"></path></g></svg>
+                                         style="fill: rgb(0, 0, 0); position: relative; top: 3px; margin: 0px 2px;"><g>
+                                            <path d="M38,0C17,0,0,17,0,38s17,38,38,38s38-17,38-38S59,0,38,0z M38,72C19.2,72,4,56.8,4,38S19.2,4,38,4s34,15.2,34,34S56.8,72,38,72z M57.5,38c0,1.1-0.9,2-2,2h-35c-1.1,0-2-0.9-2-2s0.9-2,2-2h35C56.6,36,57.5,36.9,57.5,38z M57.5,50c0,1.1-0.9,2-2,2h-35c-1.1,0-2-0.9-2-2s0.9-2,2-2h35C56.6,48,57.5,48.9,57.5,50z M57.5,26c0,1.1-0.9,2-2,2h-35c-1.1,0-2-0.9-2-2s0.9-2,2-2h35C56.6,24,57.5,24.9,57.5,26z"></path>
+                                        </g></svg>
 
 
                                     <span>mgdev.ru</span></a></aside>
                         </main>
-                        <div class="footer-link ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0" style="padding: 0;">
+                        <div class="footer-link ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0"
+                             style="padding: 0;">
                             Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                         </div>
                     </div>

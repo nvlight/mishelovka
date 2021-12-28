@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class BoysController extends Controller
 {
+    CONST BODY_BGC = "#deeaff";
+
     public function index()
     {
-
-        return view('boys.index');
+        return view('boys.index', ['body_bgc' => self::BODY_BGC]);
     }
 }

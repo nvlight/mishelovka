@@ -8,20 +8,17 @@
     <meta property="og:title" content="Мальчики каталог"/>
     <meta property="og:description" content=""/>
     <meta property="og:type" content="website"/>
-    <meta property="og:image" content="common/main_phtoto.png"/>
+    <meta property="og:image" content="{{asset('imgs/common/main_photo.png')}}"/>
     <link rel="canonical" href="veshelovks-m.html"><!--/metatextblock-->
     <meta name="format-detection" content="telephone=no"/>
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <link rel="dns-prefetch" href="https://ws.tildacdn.com">
     <link rel="dns-prefetch" href="https://static.tildacdn.com">
-    <link rel="shortcut icon" href="common/__.ico"
-          type="image/x-icon"/>
-    <link rel="apple-touch-icon" href="common/3.png">
-    <link rel="apple-touch-icon" sizes="76x76"
-          href="common/3.png">
-    <link rel="apple-touch-icon" sizes="152x152"
-          href="common/3.png">
-    <link rel="apple-touch-startup-image" href="common/3.png">
+    <link rel="shortcut icon" href="{{asset('imgs/common/__.ico')}}" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="{{asset('imgs/common/3.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('imgs/common/3.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{asset('imgs/common/3.png')}}">
+    <link rel="apple-touch-startup-image" href="{{asset('imgs/common/3.png')}}">
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="msapplication-TileImage"
           content="https://static.tildacdn.com/tild6661-3138-4432-b063-643661326138/3.png"><!-- Assets -->
@@ -65,15 +62,15 @@
         <style>#rec299486071 .t396__artboard {
                 min-height: 900px;
                 height: 100vh;
-                background-color: #deeaff;
+                background-color: {{$body_bgc}};
             }
 
             #rec299486071 .t396__filter {
                 min-height: 900px;
                 height: 100vh;
-                background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(222, 234, 255, 1)), to(rgba(222, 234, 255, 0.7)));
-                background-image: -webkit-linear-gradient(top, rgba(222, 234, 255, 1), rgba(222, 234, 255, 0.7));
-                background-image: linear-gradient(to bottom, rgba(222, 234, 255, 1), rgba(222, 234, 255, 0.7));
+                /*background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(222, 234, 255, 1)), to(rgba(222, 234, 255, 0.7)));*/
+                /*background-image: -webkit-linear-gradient(top, rgba(222, 234, 255, 1), rgba(222, 234, 255, 0.7));*/
+                /*background-image: linear-gradient(to bottom, rgba(222, 234, 255, 1), rgba(222, 234, 255, 0.7));*/
             }
 
             #rec299486071 .t396__carrier {
@@ -1423,7 +1420,7 @@
                      data-field-heightunits-value="" data-field-widthunits-value="px" data-field-filewidth-value="272"
                      data-field-fileheight-value="250">
                     <div class='tn-atom'><img class='tn-atom__img t-img'
-                                              data-original='imgs_sberkin_zero_page/arrow_white.gif'
+                                              data-original='{{asset('imgs/imgs_zero_page/arrow_white.gif')}}'
                                               imgfield='tn_img_1504792630047'></div>
                 </div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617393774736' data-elem-id='1617393774736'
@@ -1437,7 +1434,7 @@
                      data-field-heightunits-value="" data-field-widthunits-value="px" data-field-filewidth-value="1060"
                      data-field-fileheight-value="1102">
                     <div class='tn-atom'><img class='tn-atom__img t-img'
-                                              data-original='common/140x_photo.webp'
+                                              data-original='{{asset('imgs/common/140x_photo.webp')}}'
                                               imgfield='tn_img_1617393774736'></div>
                 </div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617394085024' data-elem-id='1617394085024'
@@ -1452,7 +1449,7 @@
                      data-field-heightunits-value="" data-field-widthunits-value="px" data-field-filewidth-value="603"
                      data-field-fileheight-value="130">
                     <div class='tn-atom'><img class='tn-atom__img t-img'
-                                              data-original='common/240x_photo.webp'
+                                              data-original='{{asset('imgs/common/240x_photo.webp')}}'
                                               imgfield='tn_img_1617394085024'></div>
                 </div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617394900830' data-elem-id='1617394900830'
@@ -1503,7 +1500,7 @@
                      data-field-filewidth-value="800" data-field-fileheight-value="800"><a class='tn-atom'
                                                                                            href="boy-0-1.html"> <img
                                 class='tn-atom__img t-img'
-                                data-original='imgs_zero_page__boys/0-1.jpg'
+                                data-original='{{asset('imgs/imgs_zero_page__boys/0-1.jpg')}}'
                                 imgfield='tn_img_1617397102427'> </a></div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617397240378' data-elem-id='1617397240378'
                      data-elem-type='image' data-field-top-value="215" data-field-top-res-960-value="225"
@@ -1516,7 +1513,7 @@
                      data-field-filewidth-value="800" data-field-fileheight-value="800"><a class='tn-atom'
                                                                                            href="boy-1-2.html"> <img
                                 class='tn-atom__img t-img'
-                                data-original='imgs_zero_page__boys/1-2.jpg'
+                                data-original='{{asset('imgs/imgs_zero_page__boys/1-2.jpg')}}'
                                 imgfield='tn_img_1617397240378'> </a></div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617397247854' data-elem-id='1617397247854'
                      data-elem-type='text' data-field-top-value="-7" data-field-top-res-960-value="0"
@@ -1553,7 +1550,7 @@
                      data-field-filewidth-value="800" data-field-fileheight-value="800"><a class='tn-atom'
                                                                                            href="boy-2-6.html"> <img
                                 class='tn-atom__img t-img'
-                                data-original='imgs_zero_page__boys/2-3.jpg'
+                                data-original='{{asset('imgs/imgs_zero_page__boys/2-3.jpg')}}'
                                 imgfield='tn_img_1617397254163'> </a></div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617397257772' data-elem-id='1617397257772'
                      data-elem-type='text' data-field-top-value="-12" data-field-top-res-960-value="0"
@@ -1590,7 +1587,7 @@
                      data-field-filewidth-value="800" data-field-fileheight-value="800"><a class='tn-atom'
                                                                                            href="boy-2-6.html"> <img
                                 class='tn-atom__img t-img'
-                                data-original='imgs_zero_page__boys/4-6.jpg'
+                                data-original='{{asset('imgs/imgs_zero_page__boys/4-6.jpg')}}'
                                 imgfield='tn_img_1617397641203'> </a></div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617397673250' data-elem-id='1617397673250'
                      data-elem-type='image' data-field-top-value="540" data-field-top-res-960-value="540"
@@ -1602,7 +1599,7 @@
                      data-field-leftunits-value="px" data-field-heightunits-value="" data-field-widthunits-value="px"
                      data-field-filewidth-value="800" data-field-fileheight-value="800">
                     <div class='tn-atom'><img class='tn-atom__img t-img'
-                                              data-original='imgs_zero_page__boys/7-8.jpg'
+                                              data-original='{{asset('imgs/imgs_zero_page__boys/7-8.jpg')}}'
                                               imgfield='tn_img_1617397673250'></div>
                 </div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617397690261' data-elem-id='1617397690261'
@@ -1664,7 +1661,7 @@
                      data-field-filewidth-value="800" data-field-fileheight-value="800"><a class='tn-atom'
                                                                                            href="boy-2-6.html"> <img
                                 class='tn-atom__img t-img'
-                                data-original='imgs_zero_page__boys/3-4.jpg'
+                                data-original='{{asset('imgs/imgs_zero_page__boys')}}/3-4.jpg'
                                 imgfield='tn_img_1617397872143'> </a></div>
                 <div class='t396__elem tn-elem tn-elem__2994860711617397880411' data-elem-id='1617397880411'
                      data-elem-type='text' data-field-top-value="308" data-field-top-res-960-value="315"
@@ -1774,7 +1771,7 @@
                                              class="t-tildalabel__link">
         <div class="t-tildalabel__wrapper">
             <div class="t-tildalabel__txtleft">Made on</div>
-            <div class="t-tildalabel__wrapimg"><img src="common/tildacopy.png"
+            <div class="t-tildalabel__wrapimg"><img src="{{asset('imgs/common/tildacopy.png')}}"
                                                     class="t-tildalabel__img"></div>
             <div class="t-tildalabel__txtright">MG Dev</div>
         </div>

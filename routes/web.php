@@ -42,3 +42,5 @@ Route::group([
     Route::get('/', [\App\Http\Controllers\Girls\GirlsController::class, 'index'] )->name('index');
 
 });
+
+Route::resource('catalog', 'App\Http\Controllers\Catalog\CatalogController'); // ->middleware('verified')
