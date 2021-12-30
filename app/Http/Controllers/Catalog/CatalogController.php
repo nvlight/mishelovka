@@ -12,7 +12,7 @@ use Illuminate\Database\QueryException;
 
 class CatalogController extends Controller
 {
-    const SAVE_DIR_PREFIX = "catalogImages" . DIRECTORY_SEPARATOR;
+    const SAVE_DIR_PREFIX = "catalogImages" . '/';
 
     public function index()
     {
@@ -46,7 +46,7 @@ class CatalogController extends Controller
 
             if ($file){
                 try{
-                    $file->storeAs($filename, '', ['disk' => 'local'] );
+                    $file->storeAs($filename, '', ['disk' => 'public'] );
                 } catch (FileException $fe){
                     // созданную запись нужно удалить, если файл не был сохранен
                     try{

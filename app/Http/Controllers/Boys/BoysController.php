@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Boys;
 
 use App\Http\Controllers\Controller;
+use App\Models\Catalog;
 use Illuminate\Http\Request;
 
 class BoysController extends Controller
@@ -11,6 +12,9 @@ class BoysController extends Controller
 
     public function index()
     {
-        return view('boys.index', ['body_bgc' => self::BODY_BGC]);
+        $boysCats = Catalog::where('type','1')
+            ->get();
+
+        return view('boys.index', ['body_bgc' => self::BODY_BGC, 'boysCats' => $boysCats]);
     }
 }
