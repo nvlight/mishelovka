@@ -17,11 +17,8 @@
                 <div class="mb-3">
                     <select class="form-select" name="type" id="type">
                         <option value="0">Выберите тип каталога</option>
-                        @if($catalog->type == 1)
-                            <option value="1" selected>Мальчики</option>
-                        @else
-                            <option value="2" selected>Девочки</option>
-                        @endif
+                        <option value="1" @if($catalog->type == 1) selected @endif>Мальчики</option>
+                        <option value="2" @if($catalog->type == 2) selected @endif>Девочки</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -58,16 +55,8 @@
                     <button type="submit" class="btn btn-success">Редактировать</button>
                 </div>
             </form>
-            <div class="actions mt-3 d-flex align-items-center">
-                <div class="mx-2">
-                    @include('catalog.buttons.edit', ['id' => $catalog->id])
-                </div>
-                <div class="mx-2">
-                    @include('catalog.buttons.delete', ['id' => $catalog->id])
-                </div>
-            </div>
         </div>
-
+        @include('catalog.parts.show_delete_actions')
     </div>
 
 @endsection

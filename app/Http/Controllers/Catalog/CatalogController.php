@@ -89,9 +89,52 @@ class CatalogController extends Controller
 
     public function update(Request $request, Catalog $catalog)
     {
-        dump($catalog);
-        dump($request->all());
+        //dump($catalog);
+        //dump($request->all());
 
+        $catalog->type    = $request->post('type');
+        $catalog->caption = $request->post('caption');
+        $catalog->color   = $request->post('color');
+        $img_filename     = $request->post('img_filename');
+
+        // img_filename
+        if ($catalog->img_filename && $img_filename ){
+            $catalog->img_filename = $img_filename;
+        }
+
+        // img
+        if ($file = $request->file('img')){
+            try{
+                // сначала удалим старую фотографию, если есть :smirk
+                if ($catalog->img){
+                    $this->deleteFile($catalog->img, 'public');
+                }
+
+                // теперь
+                $filename = self::SAVE_DIR_PREFIX . Str::random(40) . "." . $file->extension();
+                $catalog->img = $filename;
+                $catalog->img_filename = $file->getClientOriginalName();
+
+                $file->storeAs($filename, '', ['disk' => 'public']);
+            } catch (FileException $fe){
+                //$this->saveToLog($fe);
+                return back()
+                    ->with('crud_message',['message' => 'Ошибка при сохранеии файла!', 'class' => 'alert alert-danger']);
+            }
+        }
+
+        try {
+            $catalog->save();
+            session()->flash('crud_message',['message' => 'Запись и картинка сохранены!', 'class' => 'alert alert-success']);
+            session()->flash('catalogImageUploaded', 'Файл загружен на сервер!');
+        }
+        catch (QueryException $qe){
+            //$this->saveToLog($qe);
+            return back()
+                ->with('crud_message',['message' => 'Ошибка при обновлении!', 'class' => 'alert alert-danger']);
+        }
+
+        return back();
     }
 
     public function destroy(Catalog $catalog)

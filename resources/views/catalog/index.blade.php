@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <h3>Каталоги</h3>
+        <h2>Каталоги</h2>
 
         <div class="addNewCatalogBlock card p-3">
             <h4>Добавление нового каталога</h4>
