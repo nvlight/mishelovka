@@ -23,14 +23,14 @@
 
     <style>
         .t-body{
-            min-height: 900px;
-            height: 100vh;
+            /*min-height: 900px;*/
+            /*height: 100vh;*/
             background-color: {{$body_bgc}};
         }
     </style>
 </head>
-<body class="t-body" style="margin:0;">
-    <div>
+<body>
+    <div class="t-body" style="margin:0;">
         <style>
             #rec299486071 .t396__artboard {
 
@@ -1375,7 +1375,6 @@
                 display: flex;
             }
             section[class="Items"] .itemLine .catalogItem{
-                position: relative;
                 display: flex;
                 justify-content: center;
             }
@@ -1384,6 +1383,8 @@
                 height: 270px;
                 background-repeat: no-repeat;
                 background-size: 270px 270px;
+                position: relative;
+                display: flex;
             }
             section[class="Items"] .itemLine .catalogItem .img .caption{
                 position: absolute;
@@ -1392,6 +1393,7 @@
                 color: #fff;
                 font-weight: bold;
                 display: flex;
+                z-index: 2;
             }
             section[class="Items"] .itemLine .catalogItem .img .caption .year{
                 font-size: 44px;
@@ -1402,11 +1404,15 @@
                 padding-left: 7px;
             }
             section[class="Items"] .itemLine .catalogItem .img .bottom_bgc_theme{
-                position: absolute;
-                top: 0;
-                left: 0;
+                width: 100%;
+                height: 75px;
+                align-self: end;
+                opacity: 0.1;
             }
 
+            .mainFooter{
+                color: #fff;
+            }
         </style>
 
         <header class="mainHeader text-center pb-3">
@@ -1423,41 +1429,44 @@
         </header>
 
         <div class="container">
-
-                {{-- теперь мои данные --}}
-                @if ($boysCats)
-                    <section class="Items">
-                        @php $i = 0; @endphp
-                        @foreach($boysCats as $k => $v)
-                            @if ($i === 0)
-                                <div class="row">
-                                <div class="itemLine pb-5">
-                            @endif
-                            @php $i++; @endphp
-                                <div class="col-md-4 center-md">
-                                    <div class="catalogItem">
-                                        <div class="img" style="background-image: url({{ asset('storage/'.$v->img) }});">
-                                            <div class="caption">
-                                                <div class="year">{{ explode(' ', $v->caption)[0] }}</div>
-                                                <div class="title">{{ explode(' ', $v->caption)[1] }}</div>
-                                            </div>
-                                            <div class="bottom_bgc_theme">{{ $v->color }}</div>
+            @if ($boysCats)
+                <section class="Items">
+                    @php $i = 0; @endphp
+                    @foreach($boysCats as $k => $v)
+                        @if ($i === 0)
+                            <div class="row">
+                            <div class="itemLine pb-5">
+                        @endif
+                        @php $i++; @endphp
+                            <div class="col-md-4 center-md">
+                                <div class="catalogItem">
+                                    <div class="img" style="background-image: url({{ asset('storage/'.$v->img) }});">
+                                        <div class="caption">
+                                            <div class="year">{{ explode(' ', $v->caption)[0] }}</div>
+                                            <div class="title">{{ explode(' ', $v->caption)[1] }}</div>
+                                        </div>
+                                        <div class="bottom_bgc_theme" style="background-color: {{ $v->color }};">
                                         </div>
                                     </div>
                                 </div>
-                            @if ($i % 3 == 0)
-                                </div>
-                                @php $i=0; @endphp
-                            @endif
-                        @endforeach
-                        @if($i)
                             </div>
+                        @if ($i % 3 == 0)
                             </div>
+                            @php $i=0; @endphp
                         @endif
-                    </section>
-                @endif
-
+                    @endforeach
+                    @if($i)
+                        </div>
+                        </div>
+                    @endif
+                </section>
+            @endif
         </div>
+
+        <footer class="mainFooter p-3 bg-dark text-center">
+            <span class="">developed by <a href="https://mgdev.ru">MG Dev</a> </span>
+        </footer>
+
     </div>
 
     <script src="{{asset('js/bootstrap/5.0.2/js/bootstrap.bundle.min.js')}}"></script>

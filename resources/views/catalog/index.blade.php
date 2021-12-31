@@ -36,6 +36,17 @@
                 <button type="submit" class="btn btn-success">Добавить</button>
             </form>
         </div>
+
+        <style>
+            .catalog_actions_td{
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+            .catalog_actions_di{
+                display: inline;
+            }
+        </style>
         <div class="catalogsWrapper mt-3">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -57,9 +68,9 @@
                                 <td>{{$v->type == 1 ? 'мальчики' : 'девочки'}}</td>
                                 <td>{{$v->color}}</td>
                                 <td>{{$v->img}}</td>
-                                <td>
-                                    <a href="#">просмотреть</a>
-                                    <a href="#">редактировать</a>
+                                <td class="catalog_actions_td">
+                                    @include('catalog.buttons.show', ['id' => $v->id])
+                                    @include('catalog.buttons.edit', ['id' => $v->id])
                                     @include('catalog.buttons.delete', ['id' => $v->id])
                                 </td>
                             </tr>

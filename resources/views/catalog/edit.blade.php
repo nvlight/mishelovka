@@ -1,0 +1,59 @@
+@extends('layouts.catalog')
+
+@section('content')
+
+    <div class="container">
+        <h3>Каталоги</h3>
+
+        <a href="{{route('catalog.show', $catalog->id)}}">Каталог #{{$catalog->id}}</a>
+        <div class="addNewCatalogBlock card p-3">
+            <h4>Редактирование каталога</h4>
+            @include('catalog.flash_message')
+
+            <form action="{{route('catalog.update', $catalog)}}" method="POST" enctype="multipart/form-data" >
+                @csrf
+                @method('PATCH')
+                <div class="mb-3">
+                    <select class="form-select" name="type" id="type">
+                        <option value="0">Выберите тип каталога</option>
+                        @if($catalog->type == 1)
+                            <option value="1" selected>Мальчики</option>
+                        @else
+                            <option value="2" selected>Девочки</option>
+                        @endif
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="caption" class="form-label">Текст</label>
+                    <input type="text" class="form-control" id="caption" name="caption" aria-describedby="captionHelp"
+                       value="{{$catalog->caption}}">
+                    <div id="captionHelp" class="form-text">например 1-2 года</div>
+                </div>
+                <div class="mb-3">
+                    <label for="color" class="form-label">Цвет</label>
+                    <input type="color" class="form-control" id="color" name="color" aria-describedby="colorHelp"
+                           value="{{$catalog->color}}">
+                    <div id="colorHelp" class="form-text"> цвет фона нижней части картинки, например #ccc</div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="img" name="img" aria-describedby="img" aria-label="Upload"
+                    value="{{ explode('/', $catalog->img)[1]}}" >
+                    <label class="input-group-text" for="inputGroupFile02">выбор картинки</label>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success">Редактировать</button>
+                </div>
+            </form>
+            <div class="actions mt-3 d-flex align-items-center">
+                <div class="mx-2">
+                    @include('catalog.buttons.edit', ['id' => $catalog->id])
+                </div>
+                <div class="mx-2">
+                    @include('catalog.buttons.delete', ['id' => $catalog->id])
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+@endsection

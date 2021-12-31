@@ -71,17 +71,21 @@ class CatalogController extends Controller
 
     public function show(Catalog $catalog)
     {
-        //
+        //dump($catalog);
+
+        return view('catalog.show', ['catalog' => $catalog]);
     }
 
     public function edit(Catalog $catalog)
     {
-        //
+        //dump($catalog);
+
+        return view('catalog.edit', ['catalog' => $catalog]);
     }
 
     public function update(Request $request, Catalog $catalog)
     {
-        //
+        dump($catalog);
     }
 
     public function destroy(Catalog $catalog)
