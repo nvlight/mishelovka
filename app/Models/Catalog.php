@@ -10,6 +10,6 @@ class Catalog extends Model
     use HasFactory;
 
     protected $fillable = [
-     'type', 'color', 'img', 'caption'
+     'type', 'color', 'img', 'caption', 'img_filename'
     ];
 }

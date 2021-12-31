@@ -39,9 +39,13 @@ class CatalogController extends Controller
         if ($file = $request->file('img')){
             $filename = self::SAVE_DIR_PREFIX . Str::random(40) . "." . $file->extension();
             $attributes += ['img' => $filename];
+
+            $attributes += ['img_filename' => $file->getClientOriginalName() ];
         }
 
         try{
+            //dump($file->getClientOriginalName());
+            //dd($attributes);
             $catalog = Catalog::create($attributes);
 
             if ($file){
@@ -86,30 +90,31 @@ class CatalogController extends Controller
     public function update(Request $request, Catalog $catalog)
     {
         dump($catalog);
+        dump($request->all());
+
     }
 
     public function destroy(Catalog $catalog)
     {
-        //dd($catalog);
-
         try{
-            if ($catalog->img){
-                $this->deleteFile($catalog->img);
-            }
             $catalog->delete();
-
+            if ($catalog->img){
+                $this->deleteFile($catalog->img, 'public');
+            }
         }catch(\Exception $e){
             //$this->saveToLog($e);
-            return back()->with('crud_message',['message' => 'catalog is not deleted!', 'class' => 'alert alert-danger']);
+            return back()->with('crud_message',['message' => 'Ошибка! Каталог НЕ удален!', 'class' => 'alert alert-danger']);
         }
 
-        return back()->with('crud_message',['message' => 'catalog is deleted!', 'class' => 'alert alert-danger']);;
+        return redirect()->route('catalog.index')
+            ->with('crud_message',['message' => 'Каталог удален!', 'class' => 'alert alert-danger']);;
     }
 
-    protected function deleteFile(string $filename)
+    protected function deleteFile(string $filename, string $driver)
     {
-        if (Storage::disk('local')->exists($filename)){
-            Storage::disk('local')->delete($filename);
+        if (Storage::disk($driver)->exists($filename)){
+            Storage::disk($driver)->delete($filename);
         }
     }
+
 }

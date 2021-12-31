@@ -31,6 +31,8 @@
         @yield('content')
     </div>
 
+    @include('catalog.parts.footer')
+
     <!-- Scripts -->
 
     <!-- Optional JavaScript; choose one of the two! -->

@@ -6,6 +6,7 @@
         <h3>Каталоги</h3>
 
         <a href="{{route('catalog.show', $catalog->id)}}">Каталог #{{$catalog->id}}</a>
+
         <div class="addNewCatalogBlock card p-3">
             <h4>Редактирование каталога</h4>
             @include('catalog.flash_message')
@@ -35,11 +36,24 @@
                            value="{{$catalog->color}}">
                     <div id="colorHelp" class="form-text"> цвет фона нижней части картинки, например #ccc</div>
                 </div>
+                <div class="mb-3">
+                    <label for="img_filename" class="form-label">Имя картинки</label>
+                    <input type="text" class="form-control" id="img_filename" name="img_filename" aria-describedby="img_filename"
+                           value="{{ $catalog->img_filename}}" >
+                </div>
                 <div class="input-group mb-3">
                     <input type="file" class="form-control" id="img" name="img" aria-describedby="img" aria-label="Upload"
-                    value="{{ explode('/', $catalog->img)[1]}}" >
+                           value=
+                            @if ($catalog->img)
+                                "{{ explode('/', $catalog->img)[1]}}"
+                            @else "" @endif>
                     <label class="input-group-text" for="inputGroupFile02">выбор картинки</label>
                 </div>
+                @if ($catalog->img)
+                    <div class="mb-3">
+                        <div id="imgHelp" class="form-text">{{ $catalog->img }}</div>
+                    </div>
+                @endif
                 <div>
                     <button type="submit" class="btn btn-success">Редактировать</button>
                 </div>

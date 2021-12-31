@@ -1463,10 +1463,6 @@
             @endif
         </div>
 
-        <footer class="mainFooter p-3 bg-dark text-center">
-            <span class="">developed by <a href="https://mgdev.ru">MG Dev</a> </span>
-        </footer>
-
     </div>
 
     <script src="{{asset('js/bootstrap/5.0.2/js/bootstrap.bundle.min.js')}}"></script>

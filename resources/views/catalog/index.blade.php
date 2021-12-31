@@ -55,7 +55,8 @@
                         <th>описание</th>
                         <th>тип каталога</th>
                         <th>цвет</th>
-                        <th>картинка</th>
+                        <th>имя картинки</th>
+                        <th>путь к картинке</th>
                         <th>действия</th>
                     </tr>
                 </thead>
@@ -67,6 +68,7 @@
                                 <td>{{$v->caption}}</td>
                                 <td>{{$v->type == 1 ? 'мальчики' : 'девочки'}}</td>
                                 <td>{{$v->color}}</td>
+                                <td>{{$v->img_filename}}</td>
                                 <td>{{$v->img}}</td>
                                 <td class="catalog_actions_td">
                                     @include('catalog.buttons.show', ['id' => $v->id])
