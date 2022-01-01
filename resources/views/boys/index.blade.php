@@ -23,8 +23,8 @@
 
     <style>
         .t-body{
-            /*min-height: 900px;*/
-            /*height: 100vh;*/
+            min-height: 900px;
+            height: 100vh;
             background-color: {{$body_bgc}};
         }
     </style>
@@ -1452,6 +1452,7 @@
                             </div>
                         @if ($i % 3 == 0)
                             </div>
+                            </div>
                             @php $i=0; @endphp
                         @endif
                     @endforeach
@@ -1464,6 +1465,8 @@
         </div>
 
     </div>
+
+    @include('catalog.parts.footer')
 
     <script src="{{asset('js/bootstrap/5.0.2/js/bootstrap.bundle.min.js')}}"></script>
 
