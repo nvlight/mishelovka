@@ -28,6 +28,6 @@ class BoysController extends Controller
         $boysCats = Catalog::where('type','1')
             ->get();
 
-        return view('boys.index', ['body_bgc' => self::BODY_BGC, 'boysCats' => $boysCats, 'boysLineAlign' => 'boysLineJistyfyContentByIndex']);
+        return view('boys.index', ['body_bgc' => self::BODY_BGC, 'cats' => $boysCats]);
     }
 }

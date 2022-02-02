@@ -1,8 +1,8 @@
 <div class="container d-none d-md-block d-lg-none">
-    @if ($boysCats)
+    @if ($cats)
         <section class="Items">
             @php $i = 0; @endphp
-            @foreach($boysCats as $k => $v)
+            @foreach($cats as $k => $v)
                 @if ($i === 0)
                     <div class="row">
                         <div class="itemLine pb-5">
