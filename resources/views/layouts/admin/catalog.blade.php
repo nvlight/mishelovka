@@ -27,6 +27,10 @@
 
 </head>
 <body>
+    <div class="admin_header">
+        <h2 class="text-center">Панель администратора</h2>
+    </div>
+
     <div id="app">
         @yield('content')
     </div>
