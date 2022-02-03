@@ -44,3 +44,10 @@ Route::group([
 });
 
 Route::resource('catalog', 'App\Http\Controllers\Catalog\CatalogController'); // ->middleware('verified')
+Route::group([
+    'prefix' => 'catalog_show',
+    'as' => 'catalog_show.'
+], function (){
+    Route::get('/{id}', [\App\Http\Controllers\Catalog\SecondLevelShow::class, 'show'])->name('show');
+
+});

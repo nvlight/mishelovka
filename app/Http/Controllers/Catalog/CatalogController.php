@@ -16,9 +16,12 @@ class CatalogController extends Controller
 
     public function index()
     {
-        $cats = Catalog::all();
+        $cats = Catalog::where('id', '>', 0);
+        $catsIds = $cats->get();
+        //dd($catsIds);
 
-        return view('catalog.index', ['cats' => $cats]);
+        $cats = $catsIds;
+        return view('catalog.index', ['cats' => $cats, 'catsIds' => $catsIds]);
     }
 
     public function create()
@@ -28,25 +31,29 @@ class CatalogController extends Controller
 
     public function store(Request $request)
     {
-        //dump($request->all());
-
         $attributes = [];
         $attributes += ['type' => $request->post('type')];
         $attributes += ['caption' => $request->post('caption')];
         $attributes += ['color' => $request->post('color')];
+        $attributes += ['parent_id' => $request->post('parent_id') ?? 0];
+        $attributes += ['size' => $request->post('size') ?? 0];
+        $attributes += ['price' => $request->post('price') ?? 0];
+
+//        dump($request->post('parent_id') ?? 0 );
+//        dump($attributes);
+//        dump($request->all()); die;
 
         // img
         if ($file = $request->file('img')){
             $filename = self::SAVE_DIR_PREFIX . Str::random(40) . "." . $file->extension();
             $attributes += ['img' => $filename];
-
             $attributes += ['img_filename' => $file->getClientOriginalName() ];
         }
 
         try{
             //dump($file->getClientOriginalName());
-            //dd($attributes);
             $catalog = Catalog::create($attributes);
+            //dd($catalog);
 
             if ($file){
                 try{
@@ -65,6 +72,7 @@ class CatalogController extends Controller
             session()->flash('crud_message',['message' => 'Запись и картинка сохранены!', 'class' => 'alert alert-success']);
         }catch (QueryException $qe){
             //$this->saveToLog($qe);
+            dd($qe);
             return back()->with('crud_message',['message' => 'Create error!', 'class' => 'alert alert-danger']);
         }
 

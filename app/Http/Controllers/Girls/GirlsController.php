@@ -26,6 +26,7 @@ class GirlsController extends Controller
     public function index()
     {
         $girlsCats = Catalog::where('type','2')
+            ->where('parent_id', 0)
             ->get();
 
         return view('girls.index', ['body_bgc' => self::BODY_BGC, 'cats' => $girlsCats]);

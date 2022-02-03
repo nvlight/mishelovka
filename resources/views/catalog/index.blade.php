@@ -12,6 +12,18 @@
             <form action="{{route('catalog.store')}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <div class="mb-3">
+                    <label for="parent_id" class="form-label">Родительский каталог</label>
+                    <select class="form-select" name="parent_id" id="parent_id">
+                        <option value="0">Выберите родительский каталог</option>
+                        @foreach($catsIds as $k => $v)
+                            <option value="{{$v->id}}">
+                                {{$v->parent_id}} {{$v->type == 1 ? 'мальчики' : 'девочки'}} {{$v->caption}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Тип каталога</label>
                     <select class="form-select" name="type" id="type">
                         <option value="0">Выберите тип каталога</option>
                         <option value="1">Мальчики</option>
@@ -27,6 +39,16 @@
                     <label for="color" class="form-label">Цвет</label>
                     <input type="color" class="form-control" id="color" name="color" aria-describedby="colorHelp" value="#e66465">
                     <div id="colorHelp" class="form-text"> цвет фона нижней части картинки, например #ccc</div>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Цена</label>
+                    <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp" value="0">
+                    <div id="priceHelp" class="form-text">цена, заполняется только для товара</div>
+                </div>
+                <div class="mb-3">
+                    <label for="size" class="form-label">Размер</label>
+                    <input type="text" class="form-control" id="size" name="size" aria-describedby="sizeHelp" value="0">
+                    <div id="sizeHelp" class="form-text">размер, заполняется только для товара</div>
                 </div>
                 <div class="input-group mb-3">
                     <input type="file" class="form-control" id="img" name="img" aria-describedby="img" aria-label="Upload">
@@ -52,6 +74,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>parentId</th>
                         <th>описание</th>
                         <th>тип каталога</th>
                         <th>цвет</th>
@@ -65,6 +88,7 @@
                         @foreach($cats as $k => $v)
                             <tr>
                                 <td>{{$v->id}}</td>
+                                <td>{{$v->parent_id}}</td>
                                 <td>{{$v->caption}}</td>
                                 <td>{{$v->type == 1 ? 'мальчики' : 'девочки'}}</td>
                                 <td>{{$v->color}}</td>
