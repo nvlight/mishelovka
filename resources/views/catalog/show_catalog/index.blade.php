@@ -3,13 +3,23 @@
 @section('content')
 
     <div class="container">
-        <h3>Просмотр каталога - {{$id}}</h3>
-        <h4><a href="/{{$parentUrl}}">назад</a></h4>
+        <h5><a href="/{{$parentUrl}}">назад</a></h5>
 
         <div class="catalog_items">
             @php
-                dump($childs)
+                //dump($childs)
             @endphp
+            @if ($childs->count())
+                @foreach($childs as $k => $v)
+                    <ul class="list-group-numbered">
+                        <li style="width: 300px; height: 300px; position: absolute;">
+                            <p>{{$parentCatRuss}} {{$v->price}} {{$v->size}}</p>
+                            <p>{{$v->img_filename}}</p>
+                            <img src="{{ asset('storage/'.$v->img) }}" alt="" style="width: 100%;">
+                        </li>
+                    </ul>
+                @endforeach
+            @endif
         </div>
 
     </div>

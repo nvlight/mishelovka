@@ -10,7 +10,7 @@
                             @php $i++; @endphp
                             <div class="col-md-6 ">
                                 <div class="catalogItem" style="justify-content: center;">
-                                    <a href="">
+                                    <a href="@include('boys_girls_parts.second_url', ['id' => $v->id])">
                                         <div class="img" style="background-image: url({{ asset('storage/'.$v->img) }});">
                                             <div class="caption">
                                                 <div class="year">{{ explode(' ', $v->caption)[0] }}</div>

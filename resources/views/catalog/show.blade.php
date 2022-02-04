@@ -44,6 +44,15 @@
                         <td>{{$catalog->color}}</td>
                     </tr>
                     <tr>
+                        <td>цена</td>
+                        <td>{{$catalog->price}}</td>
+                    </tr>
+                    <tr>
+                        <td>размер</td>
+                        <td>{{$catalog->size}}</td>
+                    </tr>
+
+                    <tr>
                         <td>имя картинки</td>
                         <td>
                             {{$catalog->img_filename}}

@@ -24,28 +24,35 @@
     <link rel="apple-touch-icon" sizes="152x152" href="{{asset('imgs/common/3.png')}}">
     <link rel="apple-touch-startup-image" href="{{asset('imgs/common/3.png')}}">
 
-
+    <style>
+        .t-body{
+            /*min-height: 900px;*/
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body>
-    <div class="admin_header">
-        <div class="text-center pt-1 pb-5" style="background-color: {{$colors[0]}};">
-            <h4 class="text-uppercase">Stok Second-Luxe / Цена от 30 до 500 рублей </h4>
-            <h1 class="pt-4" style="font-size: 64px; font-weight: bold; color: {{$colors[1]}}; font-family: 'Roboto',Arial,sans-serif;">
-                {{$parentCatRuss}}
-            </h1>
-            <h4 class="mt-4">
-                Если вас что-то заинтересовало:
-                <ol>
-                    <li>Делайте СКРИН</li>
-                    <li>Пишите нам (иконка в углу, отвечает НЕ РОБОТ, а мы)</li>
-                    <li>Мы пришлем Вам больше фото и видео по запросу</li>
-                </ol>
-            </h4>
+    <div class="t-body">
+        <div class="admin_header">
+            <div class="text-center pt-1 pb-5" style="background-color: {{$colors[0]}};">
+                <h4 class="text-uppercase">Stok Second-Luxe / Цена от 30 до 500 рублей </h4>
+                <h1 class="pt-4" style="font-size: 64px; font-weight: bold; color: {{$colors[1]}}; font-family: 'Roboto',Arial,sans-serif;">
+                    {{$parentCatRuss}}
+                </h1>
+                <h4 class="mt-4">
+                    Если вас что-то заинтересовало:
+                    <ol>
+                        <li>Делайте СКРИН</li>
+                        <li>Пишите нам (иконка в углу, отвечает НЕ РОБОТ, а мы)</li>
+                        <li>Мы пришлем Вам больше фото и видео по запросу</li>
+                    </ol>
+                </h4>
+            </div>
         </div>
-    </div>
 
-    <div id="app">
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
     </div>
 
     @include('catalog.parts.footer')

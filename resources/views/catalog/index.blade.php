@@ -78,6 +78,8 @@
                         <th>описание</th>
                         <th>тип каталога</th>
                         <th>цвет</th>
+                        <th>цена</th>
+                        <th>размер</th>
                         <th>имя картинки</th>
                         <th>путь к картинке</th>
                         <th>действия</th>
@@ -92,6 +94,9 @@
                                 <td>{{$v->caption}}</td>
                                 <td>{{$v->type == 1 ? 'мальчики' : 'девочки'}}</td>
                                 <td>{{$v->color}}</td>
+                                <td>{{$v->price}}</td>
+                                <td>{{$v->size}}</td>
+
                                 <td>{{$v->img_filename}}</td>
                                 <td>{{$v->img}}</td>
                                 <td class="catalog_actions_td">

@@ -34,6 +34,19 @@
                     <div id="colorHelp" class="form-text"> цвет фона нижней части картинки, например #ccc</div>
                 </div>
                 <div class="mb-3">
+                    <label for="price" class="form-label">Цена</label>
+                    <input type="text" class="form-control" id="price" name="price" aria-describedby="priceHelp"
+                           value="{{$catalog->price}}">
+                    <div id="priceHelp" class="form-text">цена, заполняется только для товара</div>
+                </div>
+                <div class="mb-3">
+                    <label for="size" class="form-label">Размер</label>
+                    <input type="text" class="form-control" id="size" name="size" aria-describedby="sizeHelp"
+                           value="{{$catalog->size}}">
+                    <div id="sizeHelp" class="form-text">размер, заполняется только для товара</div>
+                </div>
+
+                <div class="mb-3">
                     <label for="img_filename" class="form-label">Имя картинки</label>
                     <input type="text" class="form-control" id="img_filename" name="img_filename" aria-describedby="img_filename"
                            value="{{ $catalog->img_filename}}" >
@@ -42,7 +55,7 @@
                     <input type="file" class="form-control" id="img" name="img" aria-describedby="img" aria-label="Upload"
                            value=
                             @if ($catalog->img)
-                                "{{ explode('/', $catalog->img)[1]}}"
+                                {{ explode('/', $catalog->img)[1]}}
                             @else "" @endif>
                     <label class="input-group-text" for="inputGroupFile02">выбор картинки</label>
                 </div>

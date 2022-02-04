@@ -24,15 +24,21 @@
     <link rel="apple-touch-icon" sizes="152x152" href="{{asset('imgs/common/3.png')}}">
     <link rel="apple-touch-startup-image" href="{{asset('imgs/common/3.png')}}">
 
-
+    <style>
+        .t-body{
+            /*min-height: 900px;*/
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body>
-    <div class="admin_header">
-        <h2 class="text-center">Панель администратора</h2>
-    </div>
-
-    <div id="app">
-        @yield('content')
+    <div class="t-body">
+        <div class="admin_header">
+            <h2 class="text-center">Панель администратора</h2>
+        </div>
+        <div id="app">
+            @yield('content')
+        </div>
     </div>
 
     @include('catalog.parts.footer')

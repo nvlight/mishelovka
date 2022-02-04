@@ -103,6 +103,8 @@ class CatalogController extends Controller
         $catalog->type    = $request->post('type');
         $catalog->caption = $request->post('caption');
         $catalog->color   = $request->post('color');
+        $catalog->size   = $request->post('size');
+        $catalog->price   = $request->post('price');
         $img_filename     = $request->post('img_filename');
 
         // img_filename
