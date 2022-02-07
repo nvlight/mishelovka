@@ -16,6 +16,7 @@
     -->
     <link rel="stylesheet" href="{{ asset('js/bootstrap/5.0.2/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/catalog/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('js/lightGallery/lightgallery-bundle.css')}}">
 
     <!-- Shortcut icon -->
     <link rel="shortcut icon" href="{{asset('imgs/common/__.ico')}}" type="image/x-icon"/>
@@ -23,6 +24,10 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('imgs/common/3.png')}}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{asset('imgs/common/3.png')}}">
     <link rel="apple-touch-startup-image" href="{{asset('imgs/common/3.png')}}">
+
+    <script src="{{ asset('js/lightGallery/lightgallery.umd.js') }}" ></script>
+    <script src="{{ asset('js/lightgallery/plugins/lg-zoom.umd.js') }}" ></script>
+    <script src="{{ asset('js/lightgallery/plugins/lg-thumbnail.umd.js') }}" ></script>
 
     <style>
         .t-body{

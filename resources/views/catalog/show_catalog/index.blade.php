@@ -30,12 +30,12 @@
                 }
             </style>
             @if ($childs->count())
-                <ul class="items-ul d-flex flex-wrap p-0 m-0" style="list-style-type: none;">
+                <ul id="ul-li" class="items-ul d-flex flex-wrap p-0 m-0" style="list-style-type: none;">
                 @foreach($childs as $k => $v)
-                    <li class="p-lg-2 widthClass" style="">
+                    <li class="p-lg-2 widthClass" data-src="{{ asset('storage/'.$v->img) }}">
 {{--                        <p>{{$parentCatRuss}} {{$v->price}} {{$v->size}}</p>--}}
 {{--                        <p>{{$v->img_filename}}</p>--}}
-                        <img src="{{ asset('storage/'.$v->img) }}" alt="" style="width: 100%;">
+                        <img src="{{ asset('storage/'.$v->img) }}" alt="" style="width: 100%; cursor: pointer;">
                     </li>
                 @endforeach
                 </ul>
@@ -43,5 +43,12 @@
         </div>
 
     </div>
+    <script>
+        lightGallery(document.getElementById('ul-li'), {
+            plugins: [lgZoom, lgThumbnail],
+            speed: 500,
+            //licenseKey: 'your_license_key',
+        });
+    </script>
 
 @endsection
