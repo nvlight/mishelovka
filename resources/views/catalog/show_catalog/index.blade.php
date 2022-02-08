@@ -42,6 +42,8 @@
             @endif
         </div>
 
+        @include('catalog.parts.socials')
+
     </div>
     <script>
         lightGallery(document.getElementById('ul-li'), {

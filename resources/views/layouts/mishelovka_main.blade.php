@@ -65,7 +65,6 @@
                         --color-text-subtitle: #ffffff
                     }
 
-                    }
                     .block-item .btn-link > .thumb > div.is-picture {
                         border-radius: 3px
                     }
