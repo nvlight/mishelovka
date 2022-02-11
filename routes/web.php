@@ -48,6 +48,7 @@ Route::group([
     'prefix' => 'catalog_show',
     'as' => 'catalog_show.'
 ], function (){
+    Route::get('/test', [\App\Http\Controllers\Catalog\SecondLevelShow::class, 'test'])->name('test');
     Route::get('/{id}', [\App\Http\Controllers\Catalog\SecondLevelShow::class, 'show'])->name('show');
 
 });

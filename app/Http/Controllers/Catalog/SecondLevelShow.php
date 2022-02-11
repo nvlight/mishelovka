@@ -36,4 +36,10 @@ class SecondLevelShow extends Controller
             'parentCatRuss' => $parentCatRuss, 'colors' => $colors, 'childs' => $childs
         ]);
     }
+
+    // test LightGallery html5 video + images!
+    public function test()
+    {
+        return view('catalog.show_catalog.test');
+    }
 }

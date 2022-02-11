@@ -47,7 +47,7 @@
     </div>
     <script>
         lightGallery(document.getElementById('ul-li'), {
-            plugins: [lgZoom, lgThumbnail],
+            plugins: [lgZoom, lgThumbnail, lgVideo],
             speed: 500,
             //licenseKey: 'your_license_key',
         });

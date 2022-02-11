@@ -40,10 +40,10 @@
 <body>
     <div class="t-body">
         <div class="admin_header">
-            <div class="text-center pt-1 pb-5" style="background-color: {{$colors[0]}};">
+            <div class="text-center pt-1 pb-5" style="background-color: #ccc;">
                 <h4 class="text-uppercase">Stok Second-Luxe / Цена от 30 до 500 рублей </h4>
-                <h1 class="pt-4" style="font-size: 64px; font-weight: bold; color: {{$colors[1]}}; font-family: 'Roboto',Arial,sans-serif;">
-                    {{$parentCatRuss}}
+                <h1 class="pt-4" style="font-size: 64px; font-weight: bold; color: #000; font-family: 'Roboto',Arial,sans-serif;">
+                    Chich
                 </h1>
                 <h4 class="mt-4">
                     Если вас что-то заинтересовало:
