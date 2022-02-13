@@ -20,6 +20,8 @@ class CreateImagesTable extends Migration
             $table->string('filename', 255);
             $table->string('title', 111)->nullable();
             $table->timestamps();
+
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
