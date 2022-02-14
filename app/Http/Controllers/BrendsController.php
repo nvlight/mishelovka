@@ -8,79 +8,55 @@ use App\Http\Requests\UpdateBrendsRequest;
 
 class BrendsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected function getTableColumns($tableName = 'brends')
     {
-        //
+        // Through DB Facade
+        $columns = \DB::getSchemaBuilder()->getColumnListing($tableName);
+        // or
+        // $columns = \DB::connection()->getSchemaBuilder()->getColumnListing($tableName);
+
+        return $columns;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        if ( !($brends = Brends::all()) ){
+            abort(404);
+        }
+        $columnsNames = $this->getTableColumns();
+
+        return view('brend.index', ['brends' => $brends, 'columnsNames' => $columnsNames]);
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreBrendsRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreBrendsRequest $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Brends  $brends
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Brends $brends)
+    public function show(Brends $brend)
+    {
+        $columnsNames = $this->getTableColumns();
+
+        return view('brend.show', ['columnsNames' => $columnsNames, 'brend' => $brend] );
+    }
+
+    public function edit(Brends $brend)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Brends  $brends
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Brends $brends)
+    public function update(UpdateBrendsRequest $request, Brends $brend)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBrendsRequest  $request
-     * @param  \App\Models\Brends  $brends
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateBrendsRequest $request, Brends $brends)
+    public function destroy(Brends $brend)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Brends  $brends
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Brends $brends)
-    {
-        //
+        return $brend;
     }
 }

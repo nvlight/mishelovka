@@ -18,7 +18,7 @@ class BrendsPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class BrendsPolicy
      */
     public function view(User $user, Brends $brends)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class BrendsPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class BrendsPolicy
      */
     public function update(User $user, Brends $brends)
     {
-        //
+        return true;
     }
 
     /**
@@ -65,7 +65,7 @@ class BrendsPolicy
      */
     public function delete(User $user, Brends $brends)
     {
-        //
+        return true;
     }
 
     /**
@@ -77,7 +77,7 @@ class BrendsPolicy
      */
     public function restore(User $user, Brends $brends)
     {
-        //
+        return true;
     }
 
     /**
@@ -89,6 +89,6 @@ class BrendsPolicy
      */
     public function forceDelete(User $user, Brends $brends)
     {
-        //
+        return true;
     }
 }

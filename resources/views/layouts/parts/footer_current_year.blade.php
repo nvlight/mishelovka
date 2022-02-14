@@ -1,0 +1,1 @@
+<span><script>document.write(new Date().getFullYear())</script></span>

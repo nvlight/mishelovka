@@ -52,3 +52,5 @@ Route::group([
     Route::get('/{id}', [\App\Http\Controllers\Catalog\SecondLevelShow::class, 'show'])->name('show');
 
 });
+
+Route::resource('brend', 'App\Http\Controllers\BrendsController'); // ->middleware('verified')
