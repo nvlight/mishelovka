@@ -27,6 +27,6 @@ class Brends extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'title', 'created_at', 'updated_at'
+        'title'
     ];
 }

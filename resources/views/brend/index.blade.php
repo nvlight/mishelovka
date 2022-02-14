@@ -6,6 +6,10 @@
         @php //dump($brends); @endphp
         @php //dump($columnsNames); @endphp
 
+        @include('brend.messages.add_success')
+        @include('brend.messages.delete_success')
+        @include('brend.add_modal')
+
         <table class="table table-bordered table-striped">
             <theader>
                 <tr>

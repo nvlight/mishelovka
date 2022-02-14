@@ -1,0 +1,1 @@
+<h5><a href="{{ route('brend.index') }}">назад</a></h5>

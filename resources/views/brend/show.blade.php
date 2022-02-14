@@ -4,7 +4,7 @@
     <div class="container">
         <h4>Brends - show</h4>
         @php //dump($brend); @endphp
-
+        @include('brend.parts.breadcrumbs')
         <table class="table table-bordered table-striped">
             <tbody>
                 @foreach($columnsNames as $name)
