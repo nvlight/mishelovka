@@ -94,4 +94,20 @@ class BrendsController extends Controller
             ->with('delete', ['message' => "Brend with id: {$deletedId} deleted!", 'class' => 'alert alert-danger',
                 'success' => 1]);
     }
+
+    public function destroyAjax(Brends $brend)
+    {
+        // todo - надо будет перехватить 404 и показать аяксом как надо
+        try{
+            $brend->delete();
+            $result['success'] = 1;
+            $result['deleteId'] = $brend->id;
+            $result['message'] = 'Brend is deleted!';
+        }catch (\Exception $e){
+            $result['success'] = 0;
+            $result['message'] = $e->getMessage();
+        }
+
+        return response()->json($result);
+    }
 }

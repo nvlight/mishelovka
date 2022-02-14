@@ -16,6 +16,7 @@
     -->
     <link rel="stylesheet" href="{{ asset('js/bootstrap/5.0.2/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/catalog/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('js/sweetalert2@11.4.0/sweetalert2.css')}}">
 
     <!-- Shortcut icon -->
     <link rel="shortcut icon" href="{{asset('imgs/common/__.ico')}}" type="image/x-icon"/>
@@ -57,5 +58,9 @@
 -->
 <script src="{{asset('js/bootstrap/5.0.2/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('js/catalog/main.js') }}" ></script>
+<script src="{{ asset('js/sweetalert2@11.4.0/sweetalert2.js') }}" ></script>
+
+@include('brend.js.sweet_alert')
+
 </body>
 </html>

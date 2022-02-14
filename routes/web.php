@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrendsController;
+use App\Http\Controllers\Catalog\SecondLevelShow;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +50,10 @@ Route::group([
     'prefix' => 'catalog_show',
     'as' => 'catalog_show.'
 ], function (){
-    Route::get('/test', [\App\Http\Controllers\Catalog\SecondLevelShow::class, 'test'])->name('test');
-    Route::get('/{id}', [\App\Http\Controllers\Catalog\SecondLevelShow::class, 'show'])->name('show');
+    Route::get('/test', [SecondLevelShow::class, 'test'])->name('test');
+    Route::get('/{id}', [SecondLevelShow::class, 'show'])->name('show');
 
 });
 
 Route::resource('brend', 'App\Http\Controllers\BrendsController'); // ->middleware('verified')
+Route::delete('brend_delete/{brend}', [BrendsController::class, 'destroyAjax'])->name('brend.destroy_ajax');
