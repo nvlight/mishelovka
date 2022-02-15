@@ -57,3 +57,4 @@ Route::group([
 
 Route::resource('brend', 'App\Http\Controllers\BrendsController'); // ->middleware('verified')
 Route::delete('brend_delete/{brend}', [BrendsController::class, 'destroyAjax'])->name('brend.destroy_ajax');
+Route::post('brend_create', [BrendsController::class, 'storeAjax'])->name('brend.store_ajax');

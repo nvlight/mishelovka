@@ -9,30 +9,21 @@
         @include('brend.messages.add_success')
         @include('brend.messages.delete_success')
         @include('brend.add_modal')
+        @include('brend.add_modal_ajax')
 
-        <table class="table table-bordered table-striped">
-            <theader>
+        <table class="table table-bordered table-striped" id="brendTable">
+            <thead>
                 <tr>
                     @foreach($columnsNames as $name)
                         <th>{{$name}}</th>
                     @endforeach
                     <th>actions</th>
                 </tr>
-            </theader>
+            </thead>
             <tbody>
                 @if($brends->count())
                     @foreach($brends as $brend)
-                        <tr>
-                            <td>{{$brend->id}}</td>
-                            <td>{{$brend->title}}</td>
-                            <td>{{$brend->created_at}}</td>
-                            <td>{{$brend->updated_at}}</td>
-                            <td class="d-flex align-items-center justify-content-evenly">
-                                @include('brend.buttons.show', ['route' => route('brend.show', $brend), 'id' => $brend->id])
-                                @include('brend.buttons.edit', ['route' => route('brend.edit', $brend), 'id' => $brend->id])
-                                @include('brend.buttons.delete', ['route' => route('brend.destroy', $brend), 'id' => $brend->id])
-                            </td>
-                        </tr>
+                        @include('brend.parts.tr')
                     @endforeach
                 @endif
             </tbody>

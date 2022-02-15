@@ -60,7 +60,8 @@
 <script src="{{ asset('js/catalog/main.js') }}" ></script>
 <script src="{{ asset('js/sweetalert2@11.4.0/sweetalert2.js') }}" ></script>
 
-@include('brend.js.sweet_alert')
+@include('brend.ajax.delete_brend')
+@include('brend.ajax.add_brend')
 
 </body>
 </html>

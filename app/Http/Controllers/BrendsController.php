@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Brends;
 use App\Http\Requests\StoreBrendsRequest;
 use App\Http\Requests\UpdateBrendsRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class BrendsController extends Controller
 {
@@ -20,7 +23,7 @@ class BrendsController extends Controller
 
     public function index()
     {
-        if ( !($brends = Brends::all()) ){
+        if ( !($brends = Brends::where('id', '>', 0)->orderBy('id', 'DESC') ->get() )){
             abort(404);
         }
         $columnsNames = $this->getTableColumns();
@@ -103,6 +106,35 @@ class BrendsController extends Controller
             $result['success'] = 1;
             $result['deleteId'] = $brend->id;
             $result['message'] = 'Brend is deleted!';
+        }catch (\Exception $e){
+            $result['success'] = 0;
+            $result['message'] = $e->getMessage();
+        }
+
+        return response()->json($result);
+    }
+
+    public function storeAjax(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|min:2|max:111',
+        ]);
+
+        if ($validator->fails()){
+            $rs = ['success' => 0, 'message' => 'Ошибки валидации!', 'errors' => $validator->errors()->toArray(),
+                'data' => $request->all()
+            ];
+            return response()->json($rs);
+        }
+
+        try{
+            $brend = Brends::create($request->all());
+            $result['success'] = 1;
+            $result['createdId'] = $brend->id;
+            $result['message'] = 'Brend is created!';
+
+            $trHtml = View::make('brend.parts.tr', compact('brend'))->render();
+            $result['trHtml'] = $trHtml;
         }catch (\Exception $e){
             $result['success'] = 0;
             $result['message'] = $e->getMessage();
