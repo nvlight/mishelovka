@@ -21,7 +21,7 @@
                     @include('brend.buttons.edit', ['route' => route('brend.edit', $brend)])
                 </div>
                 <div class="col-md-1 text-center">
-                    @include('brend.buttons.delete', ['route' => route('brend.destroy', $brend)])
+                    @include('brend.buttons.delete', ['route' => route('brend.destroy', $brend), 'id' => $brend->id])
                 </div>
             </div>
         </div>
