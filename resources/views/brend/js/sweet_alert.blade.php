@@ -36,7 +36,13 @@
                         //console.log('result: '+str);
 
                         if (result.isConfirmed){
-                            let isDeleted = brendDeleteAjax(id)
+                            let targetTr;
+                            try{
+                                targetTr = modalBrendDeleteSelector[i].parentElement.parentElement;
+                            }catch (e) {
+                                console.log('error with getting && delete tr')
+                            }
+                            let isDeleted = brendDeleteAjax(id, targetTr)
                         }
                     })
                 }
@@ -44,7 +50,7 @@
         }
     }
 
-    function brendDeleteAjax(id)
+    function brendDeleteAjax(id, tr)
     {
         let url = "/brend_delete/"+id;
         const xhr = new XMLHttpRequest();
@@ -59,8 +65,7 @@
                 let rs = JSON.parse(xhr.responseText);
                 if (rs['success']) {
                     // todo - теперь надо удалить саму строку, которая уже не существует, ага!
-
-
+                    tr.remove();
                     Swal.fire(
                         'Удалено!',
                         'Выбранный бренд был удален.',
