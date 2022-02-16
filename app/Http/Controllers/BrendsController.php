@@ -142,4 +142,22 @@ class BrendsController extends Controller
 
         return response()->json($result);
     }
+
+    public function getAjax(Brends $brend)
+    {
+        $columnsNames = $this->getTableColumns();
+
+        $deleteButtonHtml = View::make('brend.buttons.delete', ['route' => route('brend.destroy', $brend), 'id' => $brend->id]
+        )->render();
+
+        $result['success'] = 1;
+        $result['columnsNames'] = $columnsNames;
+        $result['brend'] = $brend;
+        $result['deleteButtonHtml'] = $deleteButtonHtml;
+
+        return response()->json($result);
+    }
+
+
+
 }

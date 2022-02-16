@@ -11,41 +11,52 @@
         }
     }
 
+    function modalBrendDeleteSelectorInner(e, modalBrendDeleteSelector) {
+        e.preventDefault();
+
+        let id = modalBrendDeleteSelector.dataset.brendId;
+        //console.log('id: ' + id);
+
+        if (id ) {
+            Swal.fire({
+                title: 'Вы уверены?',
+                text: "Вы не сможете отменить это действие!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Да, удалить это!',
+                cancelButtonText: 'Отмена',
+            }).then((result) => {
+                let str = JSON.stringify(result, null, 4); // (Optional) beautiful indented output.
+                //console.log('result: '+str);
+
+                if (result.isConfirmed){
+                    let targetTr;
+                    try{
+                        // эта штука не работает как надо
+                        // targetTr = modalBrendDeleteSelector[i].parentElement.parentElement;
+                        // сделаем новую #brendTable tr form[data-brend-id=67]
+                        targetTr = document.querySelector(`#brendTable tr form[data-brend-id='${id}']`).parentElement.parentElement;
+                        //console.log(targetTr);
+                    }catch (e) {
+                        console.log('error with getting && delete tr')
+                    }
+                    let isDeleted = brendDeleteAjax(id, targetTr)
+                }
+            })
+        }
+    }
+
     function deleteBrendHandler(){
         let modalBrendDeleteSelector = document.querySelectorAll('.modal_brend_delete');
         if (modalBrendDeleteSelector && modalBrendDeleteSelector.length){
             for(let i=0; i<modalBrendDeleteSelector.length; i++){
+                modalBrendDeleteSelector[i].removeEventListener('submit', function(e){
+                    modalBrendDeleteSelectorInner(e, modalBrendDeleteSelector[i]);
+                });
                 modalBrendDeleteSelector[i].addEventListener('submit', function(e){
-                    e.preventDefault();
-
-                    let id = modalBrendDeleteSelector[i].dataset.brendId;
-                    //console.log('id: ' + id);
-
-                    if (id ) {
-                        Swal.fire({
-                            title: 'Вы уверены?',
-                            text: "Вы не сможете отменить это действие!",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Да, удалить это!',
-                            cancelButtonText: 'Отмена',
-                        }).then((result) => {
-                            let str = JSON.stringify(result, null, 4); // (Optional) beautiful indented output.
-                            //console.log('result: '+str);
-
-                            if (result.isConfirmed){
-                                let targetTr;
-                                try{
-                                    targetTr = modalBrendDeleteSelector[i].parentElement.parentElement;
-                                }catch (e) {
-                                    console.log('error with getting && delete tr')
-                                }
-                                let isDeleted = brendDeleteAjax(id, targetTr)
-                            }
-                        })
-                    }
+                    modalBrendDeleteSelectorInner(e, modalBrendDeleteSelector[i]);
                 });
             }
         }
@@ -55,7 +66,7 @@
     {
         let url = "/brend_delete/"+id;
         const xhr = new XMLHttpRequest();
-        const params = "&_token=" + token
+        const params = "&_token=" + token;
 
         xhr.open("delete", url);
 

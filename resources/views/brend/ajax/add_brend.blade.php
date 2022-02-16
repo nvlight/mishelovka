@@ -17,7 +17,7 @@
         brendAddSelector.addEventListener('click', async function (e) {
 
             const { value: formValues } = await Swal.fire({
-                title: 'Add new brend',
+                title: 'Добавление нового бренда',
                 html:
                     '<label for="title" class="form-label">Бренд</label>' +
                     '<input type="text" class="form-control" id="titleSwal" name="title" aria-describedby="titleHelp" value="">' +
@@ -62,6 +62,25 @@
                         tr.innerHTML = rs['trHtml'];
 
                         brends_table_tr.before(tr);
+
+                        // эта штука приводит к наслоению обработчиков
+                        // getBrendHandler();
+                        // ищем новое решение
+                        let targetForm;
+                        let id = rs['createdId'];
+                        try{
+                            // эта штука не работает как надо
+                            // targetTr = modalBrendDeleteSelector[i].parentElement.parentElement;
+                            // сделаем новую #brendTable tr form[data-brend-id=67]
+                            targetForm = document.querySelector(`#brendTable tr form[data-brend-id='${id}']`);
+                            targetForm.addEventListener('submit', function(e){
+                                modalBrendShowSelectorInner(e, targetForm);
+                            });
+                            //console.log(targetTr);
+                        }catch (e) {
+                            console.log('error with getting && delete tr')
+                        }
+
                         deleteBrendHandler();
                     }
 
