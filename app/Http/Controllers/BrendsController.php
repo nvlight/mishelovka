@@ -149,11 +149,14 @@ class BrendsController extends Controller
 
         $deleteButtonHtml = View::make('brend.buttons.delete', ['route' => route('brend.destroy', $brend), 'id' => $brend->id]
         )->render();
+        $showButtonHtml   = View::make('brend.buttons.show', ['route' => route('brend.destroy', $brend), 'id' => $brend->id]
+        )->render();
 
         $result['success'] = 1;
         $result['columnsNames'] = $columnsNames;
         $result['brend'] = $brend;
         $result['deleteButtonHtml'] = $deleteButtonHtml;
+        $result['showButtonHtml']   = $showButtonHtml;
 
         return response()->json($result);
     }

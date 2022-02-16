@@ -38,6 +38,7 @@
                         // targetTr = modalBrendDeleteSelector[i].parentElement.parentElement;
                         // сделаем новую #brendTable tr form[data-brend-id=67]
                         targetTr = document.querySelector(`#brendTable tr form[data-brend-id='${id}']`).parentElement.parentElement;
+
                         //console.log(targetTr);
                     }catch (e) {
                         console.log('error with getting && delete tr')
@@ -78,11 +79,19 @@
                 if (rs['success']) {
 
                     tr.remove();
-                    Swal.fire(
-                        'Удалено!',
-                        'Выбранный бренд был удален.',
-                        'success'
-                    )
+
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'info',
+                        title: 'Бренд был удален.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    //Swal.fire(
+                    //    'Удалено!',
+                    //    'Выбранный бренд был удален.',
+                    //    'info'
+                    //)
                 }
             }
         });

@@ -1,6 +1,4 @@
 <script>
-    //alert('thats right!')
-
     var token = "some token...";
     function findTokenFunction() {
         let findToken = document.head.querySelector('meta[name="csrf-token"]');
@@ -63,19 +61,22 @@
 
                         brends_table_tr.before(tr);
 
-                        // эта штука приводит к наслоению обработчиков
-                        // getBrendHandler();
+                        // эта штука getBrendHandler(); приводит к наслоению обработчиков
                         // ищем новое решение
-                        let targetForm;
                         let id = rs['createdId'];
                         try{
-                            // эта штука не работает как надо
-                            // targetTr = modalBrendDeleteSelector[i].parentElement.parentElement;
-                            // сделаем новую #brendTable tr form[data-brend-id=67]
-                            targetForm = document.querySelector(`#brendTable tr form[data-brend-id='${id}']`);
-                            targetForm.addEventListener('submit', function(e){
-                                modalBrendShowSelectorInner(e, targetForm);
+                            // *** after add new brend tr --- add new Listeners;
+                            // for show modal form and --> delete button
+                            let targetForm1 = document.querySelector(`#brendTable tr form.modal_brend_show[data-brend-id='${id}']`);
+                            targetForm1.addEventListener('submit', function(e){
+                                modalBrendShowSelectorInner(e, targetForm1);
                             });
+                            // for edit modal form and --> delete button
+                            let targetForm2 = document.querySelector(`#brendTable tr form.modal_brend_edit[data-brend-id='${id}']`);
+                            targetForm2.addEventListener('submit', function(e){
+                                modalBrendEditSelectorInner(e, targetForm2);
+                            });
+
                             //console.log(targetTr);
                         }catch (e) {
                             console.log('error with getting && delete tr')
@@ -84,11 +85,14 @@
                         deleteBrendHandler();
                     }
 
-                    Swal.fire(
-                        'Создано!',
-                        'Бренд с указанным описанием был создан.',
-                        'success'
-                    )
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Бренд был создан.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
                 }else{
                     let error = rs['errors'];
 

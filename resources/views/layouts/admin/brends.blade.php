@@ -63,6 +63,7 @@
 @include('brend.ajax.delete_brend')
 @include('brend.ajax.add_brend')
 @include('brend.ajax.get_brend')
+@include('brend.ajax.edit_brend')
 
 </body>
 </html>

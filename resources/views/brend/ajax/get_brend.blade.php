@@ -42,10 +42,10 @@
                         title: 'Данные бренда',
                         html:
                             '<label for="title" class="form-label">Бренд</label>' +
-                            '<input type="text" class="form-control titleSwal mb-3" name="title" aria-describedby="titleHelp" disabled=""'+
+                            '<input type="text" class="form-control titleSwal mb-3" name="title" aria-describedby="titleHelp" disabled="disabled"'+
                              `value='${rs['brend']['title']}'>`,
                             //'<div id="titleHelp" class="form-text">введите название бренда, например JBS</div>',
-                    })
+                    });
 
                     let titleSwal = document.querySelector('.titleSwal');
                     if (titleSwal){
