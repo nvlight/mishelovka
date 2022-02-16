@@ -53,6 +53,17 @@
                         let div = document.createElement('div');
                         div.innerHTML = rs['deleteButtonHtml'];
                         titleSwal.after(div);
+                        //
+                        let div2 = document.createElement('div');
+                        div2.innerHTML = rs['editButtonHtml'];
+                        titleSwal.after(div2);
+
+                        // for show modal form and --> edit button
+                        let targetForm1 = document.querySelector(`#swal2-html-container .modal_brend_edit[data-brend-id='${id}']`);
+                        targetForm1.addEventListener('submit', function(e){
+                            modalBrendEditSelectorInner(e, targetForm1);
+                        });
+
                         deleteBrendHandler();
                     }
                 }

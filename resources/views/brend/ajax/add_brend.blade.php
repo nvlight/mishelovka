@@ -1,15 +1,4 @@
 <script>
-    var token = "some token...";
-    function findTokenFunction() {
-        let findToken = document.head.querySelector('meta[name="csrf-token"]');
-        if (findToken){
-            if (findToken.hasAttribute('content')){
-                token = findToken.getAttribute('content');
-            }
-        }
-    }
-    findTokenFunction();
-
     let brendAddSelector = document.querySelector('#brend_add_button');
     if (brendAddSelector){
         brendAddSelector.addEventListener('click', async function (e) {
@@ -30,7 +19,7 @@
                         //document.getElementById('swal-input2').value
                     ]
                 }
-            })
+            });
 
             if (formValues) {
                 //console.log(formValues);

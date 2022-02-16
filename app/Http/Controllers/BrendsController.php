@@ -149,7 +149,9 @@ class BrendsController extends Controller
 
         $deleteButtonHtml = View::make('brend.buttons.delete', ['route' => route('brend.destroy', $brend), 'id' => $brend->id]
         )->render();
-        $showButtonHtml   = View::make('brend.buttons.show', ['route' => route('brend.destroy', $brend), 'id' => $brend->id]
+        $showButtonHtml   = View::make('brend.buttons.show', ['route' => route('brend.show', $brend), 'id' => $brend->id]
+        )->render();
+        $editButtonHtml   = View::make('brend.buttons.edit', ['route' => route('brend.edit', $brend), 'id' => $brend->id]
         )->render();
 
         $result['success'] = 1;
@@ -157,10 +159,42 @@ class BrendsController extends Controller
         $result['brend'] = $brend;
         $result['deleteButtonHtml'] = $deleteButtonHtml;
         $result['showButtonHtml']   = $showButtonHtml;
+        $result['editButtonHtml']   = $editButtonHtml;
 
         return response()->json($result);
     }
 
+    public function updateAjax(Brends $brend)
+    {
+        //return response()->json(['success' => 1]);
 
+        $validator = Validator::make(\request()->all(), [
+            'title' => 'required|string|min:2|max:111',
+        ]);
+
+        if ($validator->fails()){
+            $rs = ['success' => 0, 'message' => 'Ошибки валидации!', 'errors' => $validator->errors()->toArray(),
+                'data' => \request()->all()
+            ];
+            return response()->json($rs);
+        }
+
+        try{
+            $brend->title = \request()->post('title');
+            $brend->save();
+
+            $result['success'] = 1;
+            $result['updatedId'] = $brend->id;
+            $result['message'] = 'Brend is updated!';
+
+            $trHtml = View::make('brend.parts.tr', compact('brend'))->render();
+            $result['trHtml'] = $trHtml;
+        }catch (\Exception $e){
+            $result['success'] = 0;
+            $result['message'] = $e->getMessage();
+        }
+
+        return response()->json($result);
+    }
 
 }
