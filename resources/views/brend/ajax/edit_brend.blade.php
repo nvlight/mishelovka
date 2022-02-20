@@ -114,6 +114,37 @@
                 let rs = JSON.parse(xhr.responseText);
                 if (rs['success']) {
 
+                    // теперь нужно добавить обновленную строку, удалить старую строку и навесить обработчики
+                    // на вновь добавленную строку
+                    let id = rs['updatedId'];
+                    let tr = document.querySelector(`#brendTable tr form[data-brend-id='${id}']`).parentElement.parentElement;
+                    let nextTr = tr.nextElementSibling;
+                    tr.remove();
+                    // add trHtml
+                    let newTr = document.createElement('tr');
+                    newTr.innerHTML = rs['trHtml'];
+                    nextTr.before(newTr);
+
+                    // нужно нависть обработчики на вновь созданную строку, на view/edit/delete
+                    try{
+                        // *** after add new brend tr --- add new Listeners;
+                        // for show modal form and --> delete button
+                        let targetForm1 = document.querySelector(`#brendTable tr form.modal_brend_show[data-brend-id='${id}']`);
+                        targetForm1.addEventListener('submit', function(e){
+                            modalBrendShowSelectorInner(e, targetForm1);
+                        });
+                        // for edit modal form and --> delete button
+                        let targetForm2 = document.querySelector(`#brendTable tr form.modal_brend_edit[data-brend-id='${id}']`);
+                        targetForm2.addEventListener('submit', function(e){
+                            modalBrendEditSelectorInner(e, targetForm2);
+                        });
+
+                        deleteBrendHandler();
+                        //console.log(targetTr);
+                    }catch (e) {
+                        console.log('error with getting && delete tr')
+                    }
+
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
