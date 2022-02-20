@@ -1,4 +1,9 @@
 <script>
+
+    function conlog($value){
+        console.log($value);
+    }
+
     let brendAddSelector = document.querySelector('#brend_add_button');
     if (brendAddSelector){
         brendAddSelector.addEventListener('click', async function (e) {

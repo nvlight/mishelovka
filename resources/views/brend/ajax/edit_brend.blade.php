@@ -59,34 +59,37 @@
                         isVisible: () => {
                             console.log('i am here!');
                             return 'cool';
+                        },
+                        didOpen: () => {
+                            //conlog('didOpen working!');
+
+                            // добавление кнопок на форму.
+                            let titleSwal = document.querySelector('.titleSwal');
+                            if (titleSwal){
+                                // delete button
+                                let div = document.createElement('div');
+                                div.innerHTML = rs['deleteButtonHtml'];
+                                titleSwal.after(div);
+
+                                // show button
+                                let div2 = document.createElement('div');
+                                div2.innerHTML = rs['showButtonHtml'];
+                                titleSwal.after(div2);
+                                // now add handler for this showing...
+                                // for edit modal form and --> show button
+                                let targetForm1 = document.querySelector(`#swal2-html-container .modal_brend_show[data-brend-id='${id}']`);
+                                //console.log(targetForm1);
+                                targetForm1.addEventListener('submit', function(e){
+                                    modalBrendShowSelectorInner(e, targetForm1);
+                                });
+
+                                deleteBrendHandler();
+                            }
                         }
                     });
                     //console.log('title: '+formValues);
                     // теперь нужно обработать нажатие на кнопку Update
                     //console.log('title: '+document.getElementById('titleSwal').value);
-
-                    // добавление кнопок на форму.
-                    let titleSwal = document.querySelector('.titleSwal');
-                    if (titleSwal){
-                        // delete button
-                        let div = document.createElement('div');
-                        div.innerHTML = rs['deleteButtonHtml'];
-                        titleSwal.after(div);
-
-                        // show button
-                        let div2 = document.createElement('div');
-                        div2.innerHTML = rs['showButtonHtml'];
-                        titleSwal.after(div2);
-                        // now add handler for this showing...
-                        // for edit modal form and --> show button
-                        let targetForm1 = document.querySelector(`#swal2-html-container .modal_brend_show[data-brend-id='${id}']`);
-                        //console.log(targetForm1);
-                        targetForm1.addEventListener('submit', function(e){
-                            modalBrendShowSelectorInner(e, targetForm1);
-                        });
-
-                        deleteBrendHandler();
-                    }
 
                     // теперь валидация и сохранение, т.е. еще один ajax запрос
                     if (isConfirmPressed){
