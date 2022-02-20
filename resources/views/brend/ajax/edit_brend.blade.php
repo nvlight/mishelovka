@@ -38,6 +38,7 @@
                 let rs = JSON.parse(xhr.responseText);
                 if (rs['success']) {
 
+                    let isConfirmPressed = 0;
                     const { value: formValues } = await Swal.fire({
                         title: 'Редактирование бренда',
                         confirmButtonText: 'Обновить',
@@ -50,6 +51,7 @@
                             '<div id="titleHelp" class="form-text"></div>',
                         preConfirm: () => {
                             //console.log(document.getElementById('titleSwal').value);
+                            isConfirmPressed = 1;
                             return [
                                 document.getElementById('titleSwal').value,
                             ]
@@ -87,8 +89,10 @@
                     }
 
                     // теперь валидация и сохранение, т.е. еще один ajax запрос
-                    let title = document.getElementById('titleSwal').value;
-                    editBrendAjax(id, title);
+                    if (isConfirmPressed){
+                        let title = document.getElementById('titleSwal').value;
+                        editBrendAjax(id, title);
+                    }
                 }
             }
         });
