@@ -197,6 +197,7 @@ class BrendsController extends Controller
         return response()->json($result);
     }
 
+    // todo - из up && down сделать 1 функцию, также переписать клиентский js и сделать из 2-х одну функцию
     public function upAjax(Brends $brend)
     {
         $result = (new Brends())->brendUp($brend->id);

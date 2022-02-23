@@ -113,8 +113,8 @@
                     addedPrevTrDownButtonHandler.addEventListener('submit', function(e){
                         modalBrendDownSelectorInner(e, addedPrevTrDownButtonHandler);
                     });
-                    conlog(addedCurrentTrUpButtonHandler);
-                    conlog(addedPrevTrUpButtonHandler);
+                    //conlog(addedCurrentTrUpButtonHandler);
+                    //conlog(addedPrevTrUpButtonHandler);
 
                 }else{
                     conlog('up is fail!');
