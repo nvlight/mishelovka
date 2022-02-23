@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 
 /**
  * App\Models\Brends
@@ -73,9 +74,9 @@ class Brends extends Model
 
             $maxId = $result['$first'];
             $result = [];
-            $result['$prevId'] = $prevId;
-            $result['$currId'] = $id;
-            $result['$first__max_id'] = $maxId;
+            $result['prevId'] = $prevId;
+            $result['currId'] = $id;
+            $result['first__max_id'] = $maxId;
 
             //$result['success'] = 1;
             //$result['message'] = 'Dummy 4!';
@@ -93,13 +94,14 @@ class Brends extends Model
 
             DB::commit();
 
-            $result['origId'] = $id;
-            $result['prevId'] = $prevId;
-            $result['success'] = 1;
-            $result['message'] = 'Brend is reverted updated!';
+            $trCurrentHtml = View::make('brend.parts.tr', ['brend' => $currentBrend])->render();
+            $trPrevHtml    = View::make('brend.parts.tr', ['brend' => $prevBrend])   ->render();
+            $result['trCurrentHtml'] = $trCurrentHtml;
+            $result['trPrevHtml']    = $trPrevHtml;
 
-            //$trHtml = View::make('brend.parts.tr', compact('brend'))->render();
-            //$result['trHtml'] = $trHtml;
+            $result['success'] = 1;
+            $result['needToRevert'] = 1;
+            $result['message'] = 'Brend is reverted updated!';
 
             // all good
         } catch (\Exception $e) {

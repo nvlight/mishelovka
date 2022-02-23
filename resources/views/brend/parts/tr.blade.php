@@ -1,6 +1,6 @@
 <tr>
-    <td>{{$brend->id}}</td>
-    <td>{{$brend->title}}</td>
+    <td data-column-name="id" data-column-value="{{$brend->id}}">{{$brend->id}}</td>
+    <td data-column-title="title">{{$brend->title}}</td>
     <td>{{$brend->created_at}}</td>
     <td>{{$brend->updated_at}}</td>
     <td class="d-flex align-items-center justify-content-evenly">
