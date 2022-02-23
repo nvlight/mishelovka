@@ -68,8 +68,21 @@ function brendStoreAjax(title)
                         targetForm2.addEventListener('submit', function(e){
                             modalBrendEditSelectorInner(e, targetForm2);
                         });
-
                         //console.log(targetTr);
+
+                        // add now handlers for up && down arrow buttons
+                        // up - .modal_brend_up
+                        let addednextTrUpButtonHandler = document.querySelector(`#brendTable tr form.modal_brend_up[data-brend-id='${id}']`);
+                        addednextTrUpButtonHandler.addEventListener('submit', function(e){
+                            modalBrendUpSelectorInner(e, addednextTrUpButtonHandler);
+                        });
+                        // также нужно навесить обработчик и на down :smirk
+                        // down - .modal_brend_down
+                        let addedCurrentTrDownButtonHandler = document.querySelector(`#brendTable tr form.modal_brend_down[data-brend-id='${id}']`);
+                        addedCurrentTrDownButtonHandler.addEventListener('submit', function(e){
+                            modalBrendDownSelectorInner(e, addedCurrentTrDownButtonHandler);
+                        });
+
                     }catch (e) {
                         console.log('error with getting && delete tr')
                     }
