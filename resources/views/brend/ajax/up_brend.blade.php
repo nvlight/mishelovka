@@ -92,6 +92,18 @@
                     // delete
                     deleteBrendHandler();
 
+                    // теперь нужно навесить обработчик и на сам up
+                    let addedCurrentTrUpButtonHandler = document.querySelector(`#brendTable td[data-column-value='${rs['currId']}'] ~ td form.modal_brend_up`);
+                    addedCurrentTrUpButtonHandler.addEventListener('submit', function(e){
+                        modalBrendUpSelectorInner(e, addedCurrentTrUpButtonHandler);
+                    });
+                    let addedPrevTrUpButtonHandler = document.querySelector(`#brendTable td[data-column-value='${rs['prevId']}'] ~ td form.modal_brend_up`);
+                    addedPrevTrUpButtonHandler.addEventListener('submit', function(e){
+                        modalBrendUpSelectorInner(e, addedPrevTrUpButtonHandler);
+                    });
+                    //conlog(addedCurrentTrUpButtonHandler);
+                    //conlog(addedPrevTrUpButtonHandler);
+
                 }else{
                     conlog('up is fail!');
                 }
