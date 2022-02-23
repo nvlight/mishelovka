@@ -1,29 +1,29 @@
 <script>
 
-    function modalBrendUpSelectorInner(e, sel){
+    function modalBrendDownSelectorInner(e, sel){
         e.preventDefault();
         let id = sel.dataset.brendId;
         //console.log('id: ' + id);
 
         if (id){
-            upBrendAjax(id);
+            downBrendAjax(id);
         }
     }
 
-    function upBrendHandler(){
-        let sel = document.querySelectorAll('.modal_brend_up');
+    function downBrendHandler(){
+        let sel = document.querySelectorAll('.modal_brend_down');
         if (sel && sel.length){
             for(let i=0; i<sel.length; i++){
                 sel[i].addEventListener('submit', function(e){
-                    modalBrendUpSelectorInner(e, sel[i]);
+                    modalBrendDownSelectorInner(e, sel[i]);
                 });
             }
         }
     }
 
-    function upBrendAjax(id)
+    function downBrendAjax(id)
     {
-        let url = "/brend_up/"+id;
+        let url = "/brend_down/"+id;
         const xhr = new XMLHttpRequest();
         const params = "&_token=" + token + '&_method=patch';
 
@@ -42,51 +42,46 @@
 
                     // найти обе строки с данными, которые нужно реверснуть
                     let currentTr = document.querySelector(`#brendTable td[data-column-name='id'][data-column-value='${rs['currId']}' ]`).parentElement;
-                    let prevTr = document.querySelector(`#brendTable td[data-column-name='id'][data-column-value='${rs['prevId']}' ]`).parentElement;
+                    let nextTr = document.querySelector(`#brendTable td[data-column-name='id'][data-column-value='${rs['nextId']}' ]`).parentElement;
                     currentTr.setAttribute('for_delete', 1);
-                    prevTr.setAttribute('for_delete', 1);
-
-                    //let tmp = currentTr.innerHTML;
-                    //currentTr.innerHTML = prevTr.innerHTML;
-                    //prevTr.innerHTML = tmp;
-
+                    nextTr.setAttribute('for_delete', 1);
 
                     // добавить новые 2 строки с новыми данными
                     let newCurrentTr = document.createElement('tr');
-                    let newPrevTr = document.createElement('tr');
+                    let newnextTr = document.createElement('tr');
                     newCurrentTr.innerHTML = rs['trCurrentHtml'];
-                    newPrevTr.innerHTML    = rs['trPrevHtml'];
+                    newnextTr.innerHTML    = rs['trNextHtml'];
+                    currentTr.before(newnextTr);
                     currentTr.before(newCurrentTr);
-                    currentTr.before(newPrevTr);
 
                     // удалить обе старые строки
                     currentTr.remove();
-                    prevTr.remove();
+                    nextTr.remove();
 
                     // навесить обработчики на эти новые 2 строки.
                     // #show
                     let addedCurrentTrShowHandler = document.querySelector(`#brendTable td[data-column-value='${rs['currId']}'] ~ td form.modal_brend_show`);
-                    let addedPrevTrShowHandler    = document.querySelector(`#brendTable td[data-column-value='${rs['prevId']}'] ~ td form.modal_brend_show`);
+                    let addednextTrShowHandler    = document.querySelector(`#brendTable td[data-column-value='${rs['nextId']}'] ~ td form.modal_brend_show`);
                     //conlog(addedCurrentTr);
-                    //conlog(addedPrevTr);
+                    //conlog(addednextTr);
                     addedCurrentTrShowHandler.addEventListener('submit', function(e){
                         modalBrendShowSelectorInner(e, addedCurrentTrShowHandler);
                     });
-                    addedPrevTrShowHandler.addEventListener('submit', function(e){
-                        modalBrendShowSelectorInner(e, addedPrevTrShowHandler);
+                    addednextTrShowHandler.addEventListener('submit', function(e){
+                        modalBrendShowSelectorInner(e, addednextTrShowHandler);
                     });
 
                     // edit
                     let addedCurrentTrEditHandler = document.querySelector(`#brendTable td[data-column-value='${rs['currId']}'] ~ td form.modal_brend_edit`);
-                    let addedPrevTrEditHandler    = document.querySelector(`#brendTable td[data-column-value='${rs['prevId']}'] ~ td form.modal_brend_edit`);
+                    let addednextTrEditHandler    = document.querySelector(`#brendTable td[data-column-value='${rs['nextId']}'] ~ td form.modal_brend_edit`);
                     //conlog(addedCurrentTrEditHandler);
-                    //conlog(addedPrevTrEditHandler);
+                    //conlog(addednextTrEditHandler);
 
                     addedCurrentTrEditHandler.addEventListener('submit', function(e){
                         modalBrendEditSelectorInner(e, addedCurrentTrEditHandler);
                     });
-                    addedPrevTrEditHandler.addEventListener('submit', function(e){
-                        modalBrendEditSelectorInner(e, addedPrevTrEditHandler);
+                    addednextTrEditHandler.addEventListener('submit', function(e){
+                        modalBrendEditSelectorInner(e, addednextTrEditHandler);
                     });
 
                     // delete
@@ -97,27 +92,27 @@
                     addedCurrentTrUpButtonHandler.addEventListener('submit', function(e){
                         modalBrendUpSelectorInner(e, addedCurrentTrUpButtonHandler);
                     });
-                    let addedPrevTrUpButtonHandler = document.querySelector(`#brendTable td[data-column-value='${rs['prevId']}'] ~ td form.modal_brend_up`);
-                    addedPrevTrUpButtonHandler.addEventListener('submit', function(e){
-                        modalBrendUpSelectorInner(e, addedPrevTrUpButtonHandler);
+                    let addednextTrUpButtonHandler = document.querySelector(`#brendTable td[data-column-value='${rs['nextId']}'] ~ td form.modal_brend_up`);
+                    addednextTrUpButtonHandler.addEventListener('submit', function(e){
+                        modalBrendUpSelectorInner(e, addednextTrUpButtonHandler);
                     });
                     //conlog(addedCurrentTrUpButtonHandler);
-                    //conlog(addedPrevTrUpButtonHandler);
+                    //conlog(addednextTrUpButtonHandler);
 
                     // также нужно навесить обработчик и на down :smirk
                     let addedCurrentTrDownButtonHandler = document.querySelector(`#brendTable td[data-column-value='${rs['currId']}'] ~ td form.modal_brend_down`);
                     addedCurrentTrDownButtonHandler.addEventListener('submit', function(e){
                         modalBrendDownSelectorInner(e, addedCurrentTrDownButtonHandler);
                     });
-                    let addedPrevTrDownButtonHandler = document.querySelector(`#brendTable td[data-column-value='${rs['prevId']}'] ~ td form.modal_brend_down`);
-                    addedPrevTrDownButtonHandler.addEventListener('submit', function(e){
-                        modalBrendDownSelectorInner(e, addedPrevTrDownButtonHandler);
+                    let addedNextTrDownButtonHandler = document.querySelector(`#brendTable td[data-column-value='${rs['nextId']}'] ~ td form.modal_brend_down`);
+                    addedNextTrDownButtonHandler.addEventListener('submit', function(e){
+                        modalBrendDownSelectorInner(e, addedNextTrDownButtonHandler);
                     });
-                    conlog(addedCurrentTrUpButtonHandler);
-                    conlog(addedPrevTrUpButtonHandler);
+                    //conlog(addedCurrentTrUpButtonHandler);
+                    //conlog(addedNextTrDownButtonHandler);
 
                 }else{
-                    conlog('up is fail!');
+                    conlog('down is fail!');
                 }
             }
         });
@@ -125,6 +120,6 @@
     }
 
     //////////////////////
-    upBrendHandler();
+    downBrendHandler();
 
 </script>

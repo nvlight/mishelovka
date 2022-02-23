@@ -60,10 +60,6 @@ class Brends extends Model
                 return $result;
             }
 
-            //DB::insert(...);
-            //DB::insert(...);
-            //DB::insert(...);
-
             $allIds = Brends::where('id','>',0)->orderBy('id', 'desc')->pluck('id')->toArray();
             //dump($allIds);
             $searchArrayId = array_search($id, $allIds, true);
@@ -77,10 +73,6 @@ class Brends extends Model
             $result['prevId'] = $prevId;
             $result['currId'] = $id;
             $result['first__max_id'] = $maxId;
-
-            //$result['success'] = 1;
-            //$result['message'] = 'Dummy 4!';
-            //return $result;
 
             $currentBrend = Brends::find($id);
             $prevBrend = Brends::find($prevId);
@@ -101,7 +93,79 @@ class Brends extends Model
 
             $result['success'] = 1;
             $result['needToRevert'] = 1;
-            $result['message'] = 'Brend is reverted updated!';
+            $result['message'] = 'Brend is reverted!';
+
+            // all good
+        } catch (\Exception $e) {
+            // something went wrong
+            DB::rollback();
+            $result['success'] = 0;
+            $result['message'] = implode(', ', [$e->getMessage(), $e->getFile(), $e->getLine()]);
+        }
+        return $result;
+    }
+
+    public function brendDown($id)
+    {
+        DB::beginTransaction();
+
+        try {
+            $first = Brends::where('id','>',0)->orderby('id','desc')->limit(1)->get();
+            $last  = Brends::where('id','>',0)->orderby('id')->limit(1)->get();
+            //dump($first);
+            //dump($last);
+
+            $result['$first'] = $first[0]->id;
+            $result['$last'] = $last[0]->id;
+            $result['$current'] = $id;
+
+            Log::info('-----------------------');
+            Log::info('$first: ' . $result['$first']);
+            Log::info('$last: '  . $result['$last']);
+            Log::info('current ID: ' . $id);
+
+            //
+            if ($id === $result['$last']){
+                // no need to revert this
+                $result['success'] = 1;
+                $result['message'] = 'Brend is NO need to revert!';
+                return $result;
+            }
+
+            $allIds = Brends::where('id','>',0)->orderBy('id', 'desc')->pluck('id')->toArray();
+            //dump($allIds);
+            $searchArrayId = array_search($id, $allIds, true);
+            //dump($currId);
+
+            $nextId = $allIds[$searchArrayId + 1];
+            Log::info('$prevId: ' . $nextId);
+
+            $maxId = $result['$first'];
+            $result = [];
+            $result['nextId'] = $nextId;
+            $result['currId'] = $id;
+            $result['first__max_id'] = $maxId;
+
+            $currentBrend = Brends::find($id);
+            $nextBrend = Brends::find($nextId);
+
+            $nextBrend->id = $maxId + 1;
+            $nextBrend->save();
+            $currentBrend->id = $nextId;
+            $currentBrend->save();
+            $nextBrend->id = $id;
+            $nextBrend->save();
+
+            DB::commit();
+
+            $trCurrentHtml = View::make('brend.parts.tr', ['brend' => $currentBrend])->render();
+            $trNextHtml    = View::make('brend.parts.tr', ['brend' => $nextBrend])   ->render();
+            $result['trCurrentHtml'] = $trCurrentHtml;
+            $result['trNextHtml']    = $trNextHtml;
+
+            $result['success'] = 1;
+            $result['needToRevert'] = 1;
+            $result['message'] = 'Brend is reverted!';
 
             // all good
         } catch (\Exception $e) {

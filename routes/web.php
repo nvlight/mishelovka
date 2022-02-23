@@ -62,3 +62,4 @@ Route::post('brend_create',           [BrendsController::class, 'storeAjax'])->n
 Route::get('brend_get/{brend}',       [BrendsController::class, 'getAjax'])->name('brend.get_ajax');
 Route::patch('brend_update/{brend}',  [BrendsController::class, 'updateAjax'])->name('brend.update_ajax');
 Route::patch('brend_up/{brend}',      [BrendsController::class, 'upAjax'])->name('brend.up_ajax');
+Route::patch('brend_down/{brend}',    [BrendsController::class, 'downAjax'])->name('brend.down_ajax');

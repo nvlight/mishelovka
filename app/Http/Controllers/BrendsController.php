@@ -203,4 +203,11 @@ class BrendsController extends Controller
 
         return response()->json($result);
     }
+
+    public function downAjax(Brends $brend)
+    {
+        $result = (new Brends())->brendDown($brend->id);
+
+        return response()->json($result);
+    }
 }
