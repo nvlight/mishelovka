@@ -197,4 +197,10 @@ class BrendsController extends Controller
         return response()->json($result);
     }
 
+    public function upAjax(Brends $brend)
+    {
+        $result = (new Brends())->brendUp($brend->id);
+
+        return response()->json($result);
+    }
 }

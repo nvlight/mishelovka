@@ -64,6 +64,7 @@
 @include('brend.ajax.add_brend')
 @include('brend.ajax.get_brend')
 @include('brend.ajax.edit_brend')
+@include('brend.ajax.up_brend')
 
 </body>
 </html>

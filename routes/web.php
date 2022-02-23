@@ -57,7 +57,8 @@ Route::group([
 
 Route::resource('brend', 'App\Http\Controllers\BrendsController'); // ->middleware('verified')
 Route::delete('brend_delete/{brend}', [BrendsController::class, 'destroyAjax'])->name('brend.destroy_ajax');
-Route::post('brend_create', [BrendsController::class, 'storeAjax'])->name('brend.store_ajax');
-Route::post('brend_create', [BrendsController::class, 'storeAjax'])->name('brend.store_ajax');
-Route::get('brend_get/{brend}', [BrendsController::class, 'getAjax'])->name('brend.get_ajax');
-Route::patch('brend_update/{brend}', [BrendsController::class, 'updateAjax'])->name('brend.update_ajax');
+Route::post('brend_create',           [BrendsController::class, 'storeAjax'])->name('brend.store_ajax');
+Route::post('brend_create',           [BrendsController::class, 'storeAjax'])->name('brend.store_ajax');
+Route::get('brend_get/{brend}',       [BrendsController::class, 'getAjax'])->name('brend.get_ajax');
+Route::patch('brend_update/{brend}',  [BrendsController::class, 'updateAjax'])->name('brend.update_ajax');
+Route::patch('brend_up/{brend}',      [BrendsController::class, 'upAjax'])->name('brend.up_ajax');
